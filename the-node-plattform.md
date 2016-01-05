@@ -3,12 +3,12 @@
 ## Javascript Everywhere
 For most developer javascript always been a client script language just for the web browser. In the beginning javascript was just about giving your web page visitors some interaction even though most interactive designers did preferred Flash.
 
-But flash is dead and javascript has evolved a lot in the last couple of years. When AJAX came javascript went from  being just a simple toy script language to be something developers using to write real and significant applications. The browers javascript engines is getting faster and more optimized by the day and when since node.js hit the community you don´t need to use PHP, Java or C# to write a backend for your web application. Now you can use javascript everywhere. Where JAVA failed javascript (and other web technologies) has succeded..."write once, run everywhere". Where XML failed, JSON has succeded.
+But flash is dead and javascript has evolved a lot in the last couple of years. When AJAX came javascript went from  being just a simple toy script language to be something developers using to write real and significant applications. The browers javascript engines is getting faster and more optimized by the day and when since node.js hit the community you don´t need to use PHP, Java or C# to write a backend for your web application. Now you can use javascript everywhere. Where JAVA failed javascript (and other web technologies) has succeeded..."write once, run everywhere". Where XML failed, JSON has succeeded.
 
 The node community is also a fast evolving technology, just what the web community need when the web plattform and its application faster getting more complex and demands the use of new technology, take real-time application for example, a perfect match for the node plattform and its non-blocking programming model.
 
 ## The History
-Node is using V8, the virtual machine for Google Chrome (written in C++). It was invented in 2009 by Ryan Dahl and a couple of developers working at the joyent company. The project was demonstrated at the inaugural European JSConf on November 8, 2009. [Be sure to watch the presentation!](https://www.youtube.com/watch?v=ztspvPYybIY).
+Node is using V8, the virtual machine for Google Chrome (written in C++). It was invented in 2009 by Ryan Dahl and a couple of developers working at the [joyent company](https://en.wikipedia.org/wiki/Joyent). The project was demonstrated at the inaugural European JSConf on November 8, 2009. [Be sure to watch the presentation!](https://www.youtube.com/watch?v=ztspvPYybIY).
 
 Node.js operates on a single thread, using non-blocking calls, allowing it to support a lot of concurrent connections. The design of sharing a single thread between all the requests is intended for building highly concurrent applications. All non-blocking calls must provide a callback and if you are familiar of AJAX programming you should know how to do this.
 
@@ -247,7 +247,7 @@ co(function*() {
 ```
 The code above is handling three async calls in a serie. The code looks just like synchronous programming with the advantage of the underlying asynchronous programming model.
 
-This is how it probably will look in coming versions of javascript where features as "async" and "await" will be available. 
+This is how it probably will look in coming versions of javascript where features as "async" and "await" will be available.
 
 
 #### Event emitters
