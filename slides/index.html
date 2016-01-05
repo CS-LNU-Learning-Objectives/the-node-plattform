@@ -46,8 +46,8 @@
                 <h3>Learning Object</h3>
                 <h1>Linnaeus University</h1>
                 <div class="lnu-footer">
-                    <img src="../images/lnu-logotype.png" />
-                    <img src="../images/lnu-symbol.png" />
+                    <img src="./images/lnu-logotype.png" />
+                    <img src="./images/lnu-symbol.png" />
                 </div>
             </section>
 
@@ -76,17 +76,237 @@
             </section>
 
             <!-- Course management -->
-           <section>
-                <section>
-                    <h2>Hello!</h2>
-                </section>
 
+            <section data-markdown>
+    					<script type="text/template">
+                    ## Javascript everywhere!
+
+                    * Browser, javascrip engines (V8, Chakra, SpiderMonkey...)
+                    * JSON
+                    * Node.js (V8)
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## What Node.js is?
+
+                  * Not a framework!
+                  * Not a web server!
+                  * Is not just for Web Sites/Applications!
+                  * It´s a plattform!
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## History of Node.js?
+
+                  * Ryan Dahl, 2009
+                  * Dropped out Math PhD, start coding web sites for money
+                  * Why slow? Why high CPU usage?
+                  * Flickr Image upload, AJAX long polling
+                  * What language to use?
+                    * Ruby, Python, Go, Haskell...
+                    * Javascript! (V8, 2008)
+                  * Six month, JSConf december 2009
+                  * Joyent company
+
+                  Ryan Dahl about node.js - [https://www.youtube.com/watch?v=SAc0vQCC6UQ](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
+                  The orginal presentation - [https://www.youtube.com/watch?v=ztspvPYybIY](https://www.youtube.com/watch?v=ztspvPYybIY)
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## node.js vs io.js
+
+                  * fork
+                  * Today
+
+              </script>
             </section>
 
 
+            <section data-markdown>
+              <script type="text/template">
+                  ## The Philosophy
 
+                  * Small core
+                  * Small modules/packages
+                  * Small interfaces
+                  * Simplicity and pragmatism
+
+              </script>
+            </section>
+            <section>
+              <section data-markdown>
+                <script type="text/template">
+                    ## NPM
+
+                    Node Package Manager
+
+                    * Bundled with node
+                    * Easy for sharing and reusing javascript code
+                    * packages/modules
+                    * cli program
+                      ```
+                      npm install <module_name>
+                      ```
+
+                </script>
+              </section>
+
+              <section data-markdown class="center">
+                <script type="text/template">
+                    ## NPM - package.json
+                    ![package.json](./images/package_json.png)
+
+                    A meta file in our projects root folder
+
+                    https://docs.npmjs.com/files/package.json
+                </script>
+              </section>
+
+              <section data-markdown class="center">
+                <script type="text/template">
+                    ## NPM - installing modules
+                    Use npm to install others modules into your project!
+
+                    ```
+                    npm install mocha --save-dev
+                    ```
+                    ![node_modules](./images/node_modules.png)
+
+                    </script>
+              </section>
+
+              <section data-markdown class="center">
+                <script type="text/template">
+                    ## About node modules
+
+                    * Add "node_modules" to your .gitignore
+                    * Use require to use the modules in your code (after installing them)
+                      * ```
+                      var express = require("express");
+                      var own = require("./realativ/path/to/my_module.js");
+                      var fileSystem = require("fs"); // node core module
+                      ```
+                    * node will look for the local folder "node_modules" or globally in the directory node was installed
+                    * modules are cached
+                    https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+                </script>
+              </section>
+          </section>
+
+          <section>
+            <section data-markdown>
+              <script type="text/template">
+                  ## How node works!
+
+                  * Non-blocking
+                  * Single threaded
+                  * Asynchronous
+                  * Event-driven
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## Blocking vs. Non-blocking
+
+                  ```php
+                  <?php
+                    $homepage = file_get_contents('http://www.example.com/');
+                    echo $homepage;
+                  ?>
+                  ```
+
+                  ```javascript
+                  var request = require('request');
+                  request('http://www.example.com', function (error, response, body) {
+                    if (!error &amp;&amp; response.statusCode == 200) {
+                      console.log(body) // Show the HTML for the homepage.
+                    }
+                  });
+                  // ... dont have to wait to do stuff here
+                  ```
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## Multi threaded vs. single thread
+
+                  * Synchronous single thread - One request at time
+                  * Fork a process for each request
+                  * Having a thread pool and use a thread for each request
+
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## The event loop
+                  The event loop is the thing that handles and processes external events and converts them into callback calls
+
+                  See the event loop as the thing that checks when stuff happends and that all register callbacks is called.
+                  Since its single threaded the event loop can only process one task at the time
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ##  Pros and cons
+
+                  ### multi threaded
+
+                  ```
+                  // avoid if users big
+                  function sortUsersByAge(users) {
+                  	users.sort(function(a, b) {
+                  		return a.age < b.age ? -1 : 1
+                  	})
+                  }
+
+                  ```
+
+                  // what if 15MB json?
+                  ```
+                  function requestHandler(req, res) {
+                    var body = req.rawBody; // Contains the POST body
+                    try {
+                       var json = JSON.parse(body);
+                       res.end(json.user.username);
+                    }
+                    catch(e) {
+                       res.end("FAIL");
+                    }
+                  }
+                  ```
+
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## Non-blocking model
+                  Always program asynchronous!
+
+                  * callbacks
+                  * promises
+                  * generators + promises
+                  * "await and async" - for the future...
+                  * Event Emitters
+              </script>
+            </section>
+          </section>
         </div>
     </div>
+
+    <!--
+      https://www.youtube.com/watch?v=SAc0vQCC6UQ
+    -->
 
     <script src="./reveal.js/lib/js/head.min.js"></script>
     <script src="./reveal.js/js/reveal.js"></script>
@@ -106,12 +326,12 @@
 
             // Optional reveal.js plugins
             dependencies: [
-                { src: '../reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
-                { src: '../reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: '../reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
-                { src: '../reveal.js/plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
-                { src: '../reveal.js/plugin/zoom-js/zoom.js', async: true },
-                { src: '../reveal.js/plugin/notes/notes.js', async: true }
+                { src: './reveal.js/lib/js/classList.js', condition: function () { return !document.body.classList; } },
+                { src: './reveal.js/plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: './reveal.js/plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+                { src: './reveal.js/plugin/highlight/highlight.js', async: true, condition: function () { return !!document.querySelector('pre code'); }, callback: function () { hljs.initHighlightingOnLoad(); } },
+                { src: './reveal.js/plugin/zoom-js/zoom.js', async: true },
+                { src: './reveal.js/plugin/notes/notes.js', async: true }
             ]
         });
 

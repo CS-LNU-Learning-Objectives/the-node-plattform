@@ -9,7 +9,7 @@ When you installed node.js you also should have installed the npm program which 
 ```
 npm -v
 ```
-This will output the version of npm that is installed on your system. The npm program have a lots of command we need to know about to be effective.
+This will output the version of npm that is installed on your system. The npm program have a lots of command we need to know about to be effective in our work.
 
 ### Install npm modules
 The most common task is to install a package to use in or program. A very common module is [lodash](https://www.npmjs.com/package/lodash) which is a utility library for javascript. Lets say we want to use that package in our program. Be sure that you are standing in your project folder in your terminal program. Then write:
@@ -71,12 +71,19 @@ If you run these two command your package.json file whould look something like:
 ```
 As you see this is pure JSON and you can probably figure out most of the stuff. You can also see that we have two keys "devDependencies" and "dependencies" where the installed packages is listed. Also observe that each package is followed by the version number that should be used.
 
-The ^-character means that when you run "npm install" it will install the latest minor version of that package eg. when it says: ^3.10.1 it will install 3.11.0 but not the 4.0.0 version (if available of course).
+The ^-character means that when you run "npm install" it will install the latest minor version of that package eg. when it says: ^3.10.1 it will install 3.10.9 but not the 3.11.0 version (if available of course).
 
-If it would be a ~-character instead it would install to next minor version, it will install the 3.10.9 version but not the 3.11.0.
+If it would be a ~-character instead it would install most recent major version. ~3.10.1 it will install the 3.11.0 version but not the 4.0.0 version.
 
-If no sign is provided it will always install that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production.
+There are more ways of specifying versions in the package.json. More information: https://docs.npmjs.com/files/package.json#dependencies
+
+If no sign is provided it will always install just that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production.
+
 
 ## NPM as a build tool
 Most front-end developers know about build tools as grunt or gulp. But you can also use npm for this.
 This is out of scope for this text but if you´re interested in this you should check out [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
+
+## Further reading
+https://docs.npmjs.com/files/package.json
+https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
