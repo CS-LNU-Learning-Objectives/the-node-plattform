@@ -1,7 +1,7 @@
 # The Node Package Manager (NPM)
-NPM is the tool that help us to install, organize and use node modules/packages. That could be modules developed by you or by other developers and that is available through the npm register. The npm register is a global service where developers contribute with modules that you can use in your programs.
+Most of the modern programming languages have some kind of a package manager. For javascript/Node that is npm, the node package manager. Npm is bundle with node and should be installed when you install node. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the npm register. The npm register is a global service where developers contribute with modules that you can use in your programs.Remember, small core, many and small modules/packages.
 
-This text will focus on the use of npm when you develop new programs and not how you publish your own modules.
+This text will focus on the use of npm when you develop new programs and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the documentation.
 
 ## Understand the npm cli
 When you installed node.js you also should have installed the npm program which let you write npm commands. Open up your terminal window and write:
@@ -24,7 +24,7 @@ Some times a module could be installed globally, that is installed so we can use
 ```
 npm install <name of the module> -g
 ```
-The npm program will then install the module in its global folder which depends on the operating system you´re using and in what folder node is installed. [More info...](https://docs.npmjs.com/files/folders)
+The npm program will then install the module in its global folder which depends on the operating system you´re using and in what folder node is installed. [More info about this.](https://docs.npmjs.com/files/folders)
 
 ## The package.json file
 Every node project should have a package.json file in it root folder. This is a meta file that describes your project. Thing as author, version, repo-URL is written to this file. The package.json also describes what dependencies your project has, that is what other modules it depends on.
@@ -82,8 +82,9 @@ If no sign is provided it will always install just that version. There are diffe
 
 ## NPM as a build tool
 Most front-end developers know about build tools as grunt or gulp. But you can also use npm for this.
-This is out of scope for this text but if you´re interested in this you should check out [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
+This is out of scope for this text but if you are interested in this you should check out [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
 
 ## Further reading
-https://docs.npmjs.com/files/package.json
-https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+* https://docs.npmjs.com/files/package.json
+* https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+* [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)

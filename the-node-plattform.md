@@ -59,6 +59,6 @@ There been some different paths of evolving node.js. At one time a couple of dev
 Today many big actors in the software area (like Microsoft, Yahoo, IBM, Intel) is supporting the development of the Node.js platform. They also have so called [Long-Term Support](https://github.com/nodejs/LTS/).
 
 ## References
-[Ryan Dahls original presentation of node.js](https://www.youtube.com/watch?v=ztspvPYybIY)
-[Ryan describes the creation of node.js](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
-[Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+* [Ryan Dahls original presentation of node.js](https://www.youtube.com/watch?v=ztspvPYybIY)
+* [Ryan describes the creation of node.js](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
+* [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
