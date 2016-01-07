@@ -1,302 +1,64 @@
 # The Node Platform
 
 ## Javascript Everywhere
-For most developer javascript always been a client script language just for the web browser. In the beginning javascript was just about giving your web page visitors some interaction even though most interactive designers did preferred Flash.
+For most developers javascript has always been a client script language for the web browser. In the beginning javascript was just a tool for code snippets that provided some kind of interaction on web pages, even though most interactive designers did preferred Flash for this task.
 
-But flash is dead and javascript has evolved a lot in the last couple of years. When AJAX came javascript went from  being just a simple toy script language to be something developers using to write real and significant applications. The browsers javascript engines is getting faster and more optimized by the day and when since node.js hit the community you don´t need to use PHP, Java or C# to write a backend for your web application. Now you can use javascript everywhere. Where JAVA failed javascript has succeeded..."write once, run everywhere". Where XML failed, JSON has succeeded.
+But [flash is announced to soon be dead](http://thenextweb.com/apps/2015/09/01/adobe-flash-just-took-another-step-towards-death-thanks-to-google/) and javascript has evolved a lot in the last couple of years. When AJAX came along javascript went from  being just a simple toy script language to be something developers could use to write real and significant web applications. The javascript engines of the browsers is getting faster and more optimized by the day and since node.js entered the community you don´t need to use PHP, Java or C# to write a backend for your web application. Now you can use javascript everywhere, front-end, as data format (JSON) and back-end. Where JAVA failed javascript has succeeded..."write once, run everywhere". Where XML failed, JSON has succeeded.
 
-The node community is also a fast evolving technology, just what the web community need when the web platform and its application faster getting more complex and demands the use of new technology, take real-time application for example, a perfect match for the node platform and its non-blocking programming model.
+The node platform is also a fast evolving technology. That is important for the web community when the web platform and its application is getting more complex and demands the use of new technology. Take web based realtime application for example, a perfect match for the node platform and its non-blocking programming model.
 
 ## The History
-Node is using V8, the virtual machine for Google Chrome (written in C++). It was invented in 2009 by Ryan Dahl and a couple of developers working at the [joyent company](https://en.wikipedia.org/wiki/Joyent). The project was demonstrated at the inaugural European JSConf on November 8, 2009. [Be sure to watch the presentation!](https://www.youtube.com/watch?v=ztspvPYybIY).
+First time we heard about node.js and javascript on the server was when Ryan Dahl presented it at the inaugural European JSConf on November 8, 2009. Be sure to watch [the original presentation!](https://www.youtube.com/watch?v=ztspvPYybIY). Ryan was interested in creating server push applications after looking at different solutions on making progress bars for uploading a file through a web browser. He was also interested in non-blocking programming techniques. So he started to write on his own project. After testing a couple of different languages for the project he realized that javascript was a perfect match with its non-blocking programing model. At this time the danish department of Google developed and released their javascript engine V8 which Ryan used in node. We can se V8 as virtual machine, written in C++, that node.js is built around. Ryan start woring at the [joyent company](https://en.wikipedia.org/wiki/Joyent). You can look at [a presentation](https://www.youtube.com/watch?v=SAc0vQCC6UQ) where Ryan describes the creation of node.js and why he choose the architecture he did.
 
 Node.js operates on a single thread, using non-blocking calls, allowing it to support a lot of concurrent connections. The design of sharing a single thread between all the requests is intended for building highly concurrent applications. All non-blocking calls must provide a callback and if you are familiar of AJAX programming you should know how to do this.
 
 ## The Philosophy
-Every platform has its own philosophy, principles that the community has accepted or an ideology of doing things that influence the evolution of the platform. In node.js this principles comes from the creator, Ryan Dahl and all the developers that have helped to build the platform. Some of the principles are inherited from javascript and some are taken from the UNIX philosophy. You don´t always have to follow this "rules" but its wise to know about these and important to understand when you design your node programs.
+Every platform has its own philosophy, principles that the community has accepted or an ideology of doing things that influence the evolution of the platform. In node.js this principles comes from the creator, Ryan Dahl and all the developers that have helped to build the platform. Some of the principles are inherited from javascript and some are taken from the UNIX philosophy. You don´t always have to follow this "rules" but its wise to know about these and important to understand when you design your node programs or looking at others.
 
 #### Small core
 The node.js core is build on the principle of having the smallest set of functionality and leave the rest of the functions to the "userland", the ecosystem of independent modules provided by the node platform developers. Instead of relying on a big and slow evolving core the features are often developed around the tight and stable core by open source developers. The core is hold to a bare minimum.
 
 #### Small modules
-The node ecosystem uses the concept of modules or packages. That is small package of code built to handle a small part of functionality. This principle has its roots in the Unix philosophy that proclaim "Small is beautiful" and "Make each program do one thing well". This also empowers developers to use many smaller modules and reuse these into a bigger program. We can also call this "Don´t Repeat Yourself" (DRY) - a common and wide used rule in programming.
+The node ecosystem uses the concept of modules, often called packages. That is chunk of code built to handle a small part of functionality. This principle has its roots in the Unix philosophy that proclaim "Small is beautiful" and "Make each program do one thing well". This also empowers developers to use many smaller modules and reuse these into a bigger program. We can also call this "Don´t Repeat Yourself" (DRY) - a common and wide used rule in programming.
 
 #### Small interface
-The node community also encourage their modules to expose only a minimal set of functionality, often called a modules public API. This makes the module easy to understand and use and hides the complexity behind its functions. A module may only just expose a single function or constructor and let more complex features be exposed as properties of the exported function. This is often called the module pattern. This is to show the user of the module a single simple entry point. Another characteristic of many node.js modules is that they are build to use not to extend by locking down the internals. This could be inflexible but has the advantage of reducing the use cases and focus to do its thing in a good way and provide simplicity.
+The node community also encourage their modules to expose only a minimal set of functionality, often called a modules public API. This makes the module easy to understand and use and hides the complexity behind its functions. A module may only just expose a single function or constructor and let more complex features be exposed as properties of the exported function. This is to show the user of the module a single simple entry point. Another characteristic of many node.js modules is that they are build to use not to extend by locking down the internals. This could be inflexible but has the advantage of reducing the use cases and focus to do its only thing in a good way and provide simplicity.
 
 #### Simplicity and pragmatism
-Designing a simple, not a perfect, general and feature-full software is a good rule of thumb. It takes less time to implement, allows faster shipping. It´s probably also easier to adept, maintain and understand. It's also common to see simple solutions i contrast to more classical object-oriented solutions with the arguments that a smaller more simplified solutions often is more simple to change and maintain when the software is going to change (which it certainly will do). "Keep it simple stupid" - KISS.
-
-## NPM, Node Package Manager
-Most of the modern programming languages have some kind of a package manager. For javascript/Node that is npm, the node package manager. Npm is bundle with node and should be installed when you install node. Npm help you as an developer to build your applications around smaller modules/packages your or other developers have build. Remember, small core, many and small modules/packages.
-
-A module (often called package) is a folder containing some javascript code and a meta file called package.json. The meta file describes the package and all of it´s dependencies (of other packages).
-
-For more information about npm and how you can use it see the documentation:
-https://docs.npmjs.com/getting-started/what-is-npm
-
-Also watch this demo where some of the key features are shown.
+Designing a simple, not a perfect, general and feature-full software is a good rule of thumb. It takes less time to implement, allows faster shipping, which is important in modern web development projects. It´s probably also easier to adept, maintain and understand. It's also common to see simple solutions in contrast to more classical object-oriented solutions with the arguments that a smaller more simplified solutions often is more simple to change and maintain when the software is going to change (which it certainly will do). "Keep it simple stupid" - KISS.
 
 ## How node.js work
-
-Node has many characteristics; non-blocking, asynchronous, event-driven, single threded...As an developer this is important to know because it is easy to do mistakes if we following the blocking, multi-threaded way which is more common in web communities as PHP and Ruby on Rails.
-
-But what does all this things mean and why does node choose a different path?
+Node has many characteristics; non-blocking, asynchronous, event-driven, single threaded. As a developer this is important to know because it is easy to do mistakes if we think in a blocking, multi-threaded way which is a more common model in web communities like PHP and Ruby on Rails.
+But what does all these words mean and why does node choose them?
 
 ### Non-blocking I/O
-Every I/O call must take a callback, whether it is to retrieve information from disk, network or another process.
-
-"Other systems try to gain parallelism by running lots of code at the same time, typically by spawning many threads. But not Node.js. For JavaScript, Node is a single-threaded environment. At most, only one line of your code will ever be executing at any time.
-Node gets away with this by doing most I/O tasks using nonblocking techniques. Rather than waiting line-by-line for an operation to finish, you create a callback function that will be invoked when the operation eventually succeeds or fails."
-
-our code should do what it needs to do, then quickly hand control back over to the event loop so Node can work on something else.
+I/O stands for Input/Output. In this case we can think of it as reading or writing data. That can be to memory, disk or network. This is often time consuming operations in a application. Of course it will be a slow operation if we use a synchronous model and always have to wait for the read/write operation to be done. This will block our code. Node gets away with this by doing most I/O tasks using nonblocking techniques. Rather than waiting line-by-line for an operation to finish, you create a callback function that will be invoked when the operation eventually succeeds or fails. As you are familiar to program in javascript you recognize this model with callbacks, event queue and event loop. Do you need to refresh your knowledge about this. Watch this speak from [Philip Roberts called "What the heck is the event loop anyway?"](https://www.youtube.com/watch?v=8aGhZQkoFbQ). Well it is really a good watch anyway. The speak is about the V8 engine in a browser but it similar to node.js, just change the Web APIs in the browser to I/O operations handled by the OS.
 
 ### Single Thread vs. multi-threaded
-Classical web servers like Apache or IIS makes a new thread for every request that comes in. A thread can be seen as a own process in the operating system. This means that in theory we can have many threads running at the same time doing parallel works. There will be problem when different threads are trying to work against the same shared resources like the filesystem or a database (called I/O operations). So threads have to look these resources during there work and other threads get blocked and just have to wait to do their stuff. Programming with threads can be very tricky hard and mostly you don´t want to think about that as a modern web developer. One other thing is that for every request multi-threaded servers spawn a new thread which costs CPU cycles and memory.
+Classical web servers like Apache or IIS makes a new thread for every request that comes in. A thread can be seen as a own process in the operating system. This means that in theory we can have many threads running at the same time doing parallel works. There will be problem when different threads are trying to work against the same shared resources like the filesystem or a database. So threads have to look these resources up during there work and other threads get blocked and just have to wait to do their operations. Programming with threads can be very tricky hard and mostly you don´t want to think about that as a modern web developer. One other thing is that for every request multi-threaded servers spawn a new thread which costs memory and at some point the whole memory is used.
 
-Node.js is using a single threaded model. This can sound a bit backward but a matter of fact this can optimize things. As you probably know javascript has a asynchronous nature with a event queue where you instead of blocking your code with I/O-operations you register callbacks to be called whenever the operation is ready leaving time for other codes to be executed. This is also how we do it in node.js. These two images below try to illustrate the difference
+Node.js is using a single threaded model. This can sound a bit backward but a matter of fact this can optimize things. As you probably know javascript has a asynchronous nature with a event queue where you instead of blocking your code with I/O-operations you register callbacks to be called whenever the operation is ready leaving time for other codes to be executed. This free up the ability to handle many request which is one of the pros of using node.js as a web server. These images below try to illustrate the cases:
 
-TODO: Add images
+![Multithreaded](./slides/images/multithreaded.png)
 
-#### Pros and cons
-Both this models have different pros and cons.
+In the picture above we see a (very simplified) image of the blocking nature in a multithreaded server. We see three requests coming in to the server (the box named S). Each request spawn a thread and each thread tries to do different types of I/O operation meaning that they sometimes have to wait for each other and then block the threads code. Since every request gets an own thread we cant handle to many connections at the same time (depends on how powerful the server is).
 
-Multi-threaded
-  * Pros
-    * Common, easy programming model
-  * cons
-    * eats memory
-    * doesn´t scale well
+![Multithreaded](./slides/images/singlethreaded.png)
 
-Single threaded synchronous
-* Pros
-  * good memory use
-  * can handle many connections  
-* Cons
-  * Harder(?) programming model
+In the other picture we see the node.js way. This should be familiar to you since you done some javascript coding before. Node.js has only one thread that register every I/O operation as events in the event queue. The event loop goes through this and decide if the events callback should invoke or if it should put the operation to be handle by node.js internal. If a I/O is registered the event loop delegete the work to an async thread pool which is handle by the libuv which is a C library handling this operations in the operating system. When the operation is done the event loop makes the registered callback invoke. Libuv is a part that node.js is using under the hood. As a web developer writing node applications you use the javascript API provided by node.js. See the below image for an other view of the node.js architecture:
+
+![node.js](./slides/images/nodejs_system.png)
+This image was taken from: https://twitter.com/BusyRich/status/494959181871316992
 
 
-### The event loop
+If you want to get a real deep understanding of the node.js architecture please read this article [optional]
 
-### Event-driven programming
-When Ryan Dahl started to developed node.js he was looking for a way to write a non-blocking server. He tried many different languages like C and Lua but it was when he realized how the nature of javascript would perfect as the language pushing his project forward. Javascript has models for asynchronous programming, have closures and when Google (the danish deparment) released their V8-engine at the same time he went for javascript as the language for the node plattform.
+## Node.js vs io.js and the future
+There been some different paths of evolving node.js. At one time a couple of developers forked the original code base of node.js () and started a own project they called [io.js](http://iojs.org). The developers get tiered of Joyents (the maintainer of node.js) development cycles and wanted to get things done more faster. They released io.js version 1.0 while node.js was on version 0.12-someting. These different path continued for a while till 2015-09-14 when the Node.js Foundation released an announcement telling that the two groups joined together in one same code base again starting with the node.js 4.0.0 version.
 
-If you read the text above you realize that nodes single-threaded natures calls for some way to program to create this callbacks that are needed. When you read about node you will here about this as event-driven programming. You should already be familiar with javascript and asynchronous programming. Many programmers have used languages like PHP and JAVA before and are used to a more synchronous approach, that meaning the code executes row by row, from top to bottom.
-
-```
-$homepage = file_get_contents('http://www.example.com/'); // this is blocking code
-echo $homepage; // the data is here to write out
-```
-The example above is PHP code and waits for each row to execute before the echo statement is executed.
-
-In javascript/node we have many examples of asynchronous programming where the program doesn´t stop and wait for the call to be ready.
-
-```
-var req = new XMLHttpRequest();
-req.addEventListener("load", function(){
-    // function to run when we got response from server
-    console.log(req.responseText);
-});
-
-req.open("GET", "data.json");
-req.send();
-console.log(req.responseText); // UNDEFINED!!!!
-```
-As you can see above we add an event handler where we write the code we want to run when the event has happened (in this case the load event of the XMLHttpRequest object). Its important to understand that the last row in the example will print out undefined cause that code will run before the load-event has trigged and the data has arrived. You should all know about the javascript queue and how events are handled by the browser.
-
-In node we use to talk about "the event loop" which works in similar ways. One thing to remember about node is that all code runs in one single thread. On other platforms there could be code running in multiple threads independent of each other. That means that many parallel processes (as web request to a web server) would fork a new thread and run its code in this. This has some pros but if you got a lot of requests/processes many threads will be created and the server needs a lot of hardware. Since node has a single thread with an event loop it doesn´t spend time/resources waiting for things to finished. Instead it is able to sequentially execute a number of tasks very rapidly. This is why Node is so fast and could maintain good performance on smaller hardware servers.
-
-Of course there is a drawback with this! Running tasks that take lots of processing time (like complex synchronous algorithms) will block the one single thread and therefor block other tasks to run. This is way you always should think about your Node-code and don´t do slow synchronous stuff, like reading a file with synchronous methods. When you writing a web server application that requires a lot of computation don´t use Node! Use Node when you write an application that just shuffles data in some format.
-
-
-
-
-### How to do event-driven programming?
-So we now know how Node works but what kind of patterns do we use when we´re programming on Node. Below follows a common patterns that you will run into when studying this.
-
-#### Callback pattern
-This is the simplest and maybe most used pattern when looking at Node modules made. Since functions can be treated as a variable in javascript we can use a function as an argument to another function. The nature of closures allow us to call that callback function when the stuff we´re doing are ready. Lets see an example taken from the documentation of the FileSystem-module in the node core:
-
-```
-var fs = require("fs");
-fs.readFile('/etc/passwd', function (err, data) {
-  if (err) {
-    throw err;
-  }
-  console.log(data);
-});
-```
-As you see the method readFile in the FileSystem object takes a path and a callback function. That callback function will be called when the file has been read or there been something wrong. This callback function should always be the last argument.
-Then look how the error handling is managed. If there is an error throw it as fast as possible then the code for handling the data. Also observe that the callbacks function provided always should have the error as first parameter. The error must always be of type Error.
-
-Another example could be when you self write a function that takes a callback. Say you write a module thats doing something that takes time, reading a file, saving to database...If the user of this module should write code against it you should provide a way to tell when your operation is ready, supporting a non-blocking model. *You don´t want to write a module that blocks the thread!*
-
-```
-function readData(path, callback) {
-  // if path not provided call the callback function with an error
-  if(!path) {
-    // it´s common to return as fast as possible so we don´t need else statements
-    // and don't get any more code running in this function (will be hard bugs to find)
-    // only invoke a callback once!
-    return callback(new Error("Must provide a path"));
-  }
-
-  var result = mySlowThing();
-  if(!result) {
-    return callback(new Error("Something went wrong!"));
-  }
-
-  // All is good! Notice that first parameter always is reserved for errors
-  // since we don´t have any just pass null and then the result
-  return callback(null, result);
-}
-
-```
-
-Using this function should be like:
-```
-readDate("\etc\temp.txt", function(err, result) {
-    // handle err and data
-});
-```
-Since we using the callback pattern we know how to add a callback function!
-
-##### Callback hell
-Well the callback pattern should be pretty easy to grasp but when you start writing more complex applications you will soon see a drawback with callbacks, the so called callback hell. Looking at the example below should lead you to that insight. Platform
-
-```
-asyncOne(function(err) {
-     asyncTwo(function(err) {
-       asyncThree(function(err) {
-         [...]
-       });
-    });
-});
-```
-This is from a case where three async functions is called after each other in the order asyncOne, asyncTwo, asyncThree. Since we must wait for each turn our code is getting cluttering (and we don´t have any error handling). You can probably see what this is leding! Its leading to callback hell! When your code start to get wide watch up!
-How could we implement a good error handling in this example? Start renaming the parameters to different them in different scope? Its also a good ground for memory leaks. Of course we can refactor our code to be better but lets move on to other solutions!
-
-#### Async module
-Since the Node platform supports different modules outside the core we could of course use a module. One of the more popular are the async library which is build for async programming. The module could be found at: https://www.npmjs.com/package/async and you simple install it through npm:
-```
-npm install async --save
-```
-The module let you in a pretty easy way set up function that should be called parallel or in series and you could write your code more as if your where coding in a synchronous way.
-
-You can found more examples of how to use the async module see the link above. Of course there are other module that do the same thing. Search the npm register for more.
-
-#### Promises
-The javascript echo system have other ways to deal with this problem. One common solution is promises. Promises will be a core feature in the ES2016 specification and that means that promises now is supported in the node platform without any extra modules, its now a language feature well worth learning! Check it out at: [https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
-
-A promise is just as it sounds, something that promise to do something. In async programming this means promise to return when something is ready or fulfilled. When we call a function with support for this we get a promise back in a pending status. This means that we have a promise to hold on to and when the job is done. A promise can then be fulfilled or rejected depending on how the operation went. It is then in the settled status.
-
-
-Below you can see a example of a function supporting Promises.
-```
-function doStuff(value) {
-  return new Promise(function(resolve, reject) {
-    // do stuff here...get err or result
-    if(err) {
-      // reject if it went wrong
-      return reject(new Error("Something went wrong with value %s", value));
-    }
-    // resolve if success
-    return resolve(result);
-  });
-}
-```
-
-And here is how to use this.
-```
-doStuff(1).then(function(value) {
-  console.log(value);
-}).catch(err) {
-  console.log(err.message);
-}
-```
-
-The nice thing about promises is how you can chain async function calls and easy handle the errors
-```
-doStuff(1).then(function(value) {
-  console.log(value);
-  // returns a new promise
-  return doStuff(value)
-}).then(function(value) {
-  console.log(value);
-}).catch(err) {
-  console.log(err.message);
-}
-```
-As you can see above as long as we return a Promise object we can chain those calls to be don in a serial order and handling the errors in the last catch statement in a more readable way then when we using callbacks.
-
-#### Generators
-Generators have the same purpose as promises and is supported at the node platform (>= 4.x). But the syntax is different and really trying to make the code look like if we done it synchronous (for the better?).
-
-```
-function* generatorFn () {
-  console.log('I was suspended')
-}
-var generator = generatorFn()
-setTimeout(function () {
-  generator.next()
-}, 2000)
-```
-
-The function above is a generator function and we can see that by the \*-character after the function word. This means that this function will by default be run in a suspended mode, no console.log will be outputted. But when we call next on that function it will run, in this case after two seconds.
-
-```
-function* channel () {
-  var name = yield 'Hello, what is your name?';
-  return 'Hello there ' + name;
-}
-var gen = channel()
-console.log(gen.next().value) // Hello, what is your name?
-console.log(gen.next('John')) // Hello there John
-```
-
-by using the keyword "yield" in our generator function we can stop the code and demand a call the next-function to continue run the code in the function.
-
-To use generators in the promise example it will look like:
-
-```
-function doStuff(value) {
-  return new Promise(function(resolve, reject) {
-    // do stuff here...get err or result
-    if(err) {
-      // reject if it went wrong
-      return reject(new Error("Something went wrong with value %s", value));
-    }
-    // resolve if success
-    return resolve(result);
-  });
-}
-```
-
-So what have this to do with async programming you may ask. Well by combining promises and generators we can find a really simple code structure for handling async programing in node.js. In this example we´re using the library [co](https://github.com/tj/co) which is a so called "generator-based-control-flow library".
-
-```
-co(function*() {
-  // the next *yield* will only run after the previous *yield* is done
-  // like sync code
-  var result1 = yield getData(); // returns a promise
-  var result2 = yield getData2(result1); // returns a promise
-  var result3 = yield getData3(result2); // returns a promise
-  return result3;
-}).then(function(result) {
-  // single 'then' to handle the final return value
-  console.log(result);
-}, function(err) {
-  console.log(err);
-});
-```
-The code above is handling three async calls in a series. The code looks just like synchronous programming with the advantage of the underlying asynchronous programming model.
-
-This is how it probably will look in coming versions of javascript where features as "async" and "await" will be available.
-
-
-#### Event emitters
-One thing that is special for the Node platform and not a core thing in javascript for the browser is Event Emitters. This is the ability to define own custom events and fire those to all that has a listener bind to that event. If you think about it with callbacks and promises we could just be called once when a certain thing happen. That is fine for stuff like reading a file or saving stuff to the database but what if we want to notify the user of our module more than once. We maybe write some kind of server and want to notify when a user connect. To do this we can create a custom event and trigger that for every one that listens. This important to know about when we start creating own independent modules.
-
+Today many big actors in the software area (like Microsoft, Yahoo, IBM, Intel) is supporting the development of the Node.js platform. They also have so called [Long-Term Support](https://github.com/nodejs/LTS/).
 
 ## References
-TODO
+[Ryan Dahls original presentation of node.js](https://www.youtube.com/watch?v=ztspvPYybIY)
+[Ryan describes the creation of node.js](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
+[Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
