@@ -53,6 +53,10 @@ This image was taken from: https://twitter.com/BusyRich/status/49495918187131699
 
 If you want to get a real deep understanding of the node.js architecture please read this article [optional]
 
+The big advantage of the node.js model is that we can handle a lot more requests than traditional multithreaded servers. Its also very suitable for asynchronous realtime application. The main draw back is that node.js isn´t suited for complex calculating operation like more synchronous complex algorithms. These will block the single thread and block the whole application. This is not good when we have a server application that listening for requests. In that way is node.js not a silver bullet and not a complete replacement for traditional web platforms. But as long as you are aware of this its a very likable platform to work with. If you need to do more complex stuff there are ways of creating new node processes to handle this. Try to to so much you can asynchronous to free up the main thread. Always return as fast as possible from the functions you code.
+
+
+
 ## Node.js vs io.js and the future
 There been some different paths of evolving node.js. At one time a couple of developers forked the original code base of node.js () and started a own project they called [io.js](http://iojs.org). The developers get tiered of Joyents (the maintainer of node.js) development cycles and wanted to get things done more faster. They released io.js version 1.0 while node.js was on version 0.12-someting. These different path continued for a while till 2015-09-14 when the Node.js Foundation released an announcement telling that the two groups joined together in one same code base again starting with the node.js 4.0.0 version.
 

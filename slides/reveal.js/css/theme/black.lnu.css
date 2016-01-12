@@ -169,3 +169,13 @@
     margin: 0 !important;
     box-shadow: none !important;
 }
+
+.two-floating-elements ul {
+    max-width: 50%;
+    float:left;
+
+}
+.two-floating-elements p img {
+  max-width: 50%;
+  float:right;
+}

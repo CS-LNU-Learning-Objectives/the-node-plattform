@@ -143,9 +143,9 @@ doStuff(1).then(function(value) {
   return doStuff(value)
 }).then(function(value) {
   console.log(value);
-}).catch(err) {
+}).catch(function(err) {
   console.log(err.message);
-}
+});
 ```
 As you can see above as long as we return a Promise object we can chain those calls to be don in a serial order and handling the errors in the last catch statement in a more readable way then when we using callbacks.
 

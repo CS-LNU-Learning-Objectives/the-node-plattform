@@ -49,6 +49,7 @@
                     <img src="./images/lnu-logotype.png" />
                     <img src="./images/lnu-symbol.png" />
                 </div>
+                <pre><code></code></pre> <!-- Fix for color coding in md -->
             </section>
 
             <!-- CC -->
@@ -77,56 +78,36 @@
 
             <!-- Course management -->
 
-            <section data-markdown>
-    					<script type="text/template">
-                    ## Javascript everywhere!
-
-                    * Browser, javascrip engines (V8, Chakra, SpiderMonkey...)
-                    * JSON
-                    * Node.js (V8)
-              </script>
-            </section>
-
-            <section data-markdown>
+          <section data-markdown>
               <script type="text/template">
-                  ## What Node.js is?
+                  <p  class="center"><img width="50%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt=""></p>
 
                   * Not a framework!
                   * Not a web server!
                   * Is not just for Web Sites/Applications!
-                  * It´s a plattform!
+                  * It´s a platform!
               </script>
             </section>
 
+
+
             <section data-markdown>
               <script type="text/template">
+                  <!-- .slide: class="two-floating-elements" -->
+
                   ## History of Node.js?
+                  ![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ryan_Dahl.jpg/400px-Ryan_Dahl.jpg)
 
-                  * Ryan Dahl, 2009
-                  * Dropped out Math PhD, start coding web sites for money
-                  * Why slow? Why high CPU usage?
-                  * Flickr Image upload, AJAX long polling
-                  * What language to use?
-                    * Ruby, Python, Go, Haskell...
-                    * Javascript! (V8, 2008)
-                  * Six month, JSConf december 2009
-                  * Joyent company
+                    * Ryan Dahl, 2009
+                    * Dropped out Math PhD, start coding web sites for money
+                    * Flickr Image upload, AJAX long polling
+                    * What language to use?
+                    * Six month, JSConf december 2009
+                    * Joyent company
 
-                  Ryan Dahl about node.js - [https://www.youtube.com/watch?v=SAc0vQCC6UQ](https://www.youtube.com/watch?v=SAc0vQCC6UQ)
-                  The orginal presentation - [https://www.youtube.com/watch?v=ztspvPYybIY](https://www.youtube.com/watch?v=ztspvPYybIY)
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ## node.js vs io.js
-
-                  * fork
-                  * Today
 
               </script>
             </section>
-
 
             <section data-markdown>
               <script type="text/template">
@@ -139,8 +120,147 @@
 
               </script>
             </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                <!-- .slide: class="center" -->
+                  ## characteristic
+
+                  * Non-blocking
+                  * Single threaded
+                  * Asynchronous
+                  * Event-driven
+              </script>
+            </section>
+
+
+
+            <section>
+            <section data-markdown>
+
+              <script type="text/template">
+                  ## Blocking vs. Non-blocking
+
+                  blocking
+                  ```
+                  <?php
+                    $homepage = file_get_contents("http://www.example.com/");
+                    echo $homepage;
+                  ?>
+                  ```
+
+                  non-blocking
+                  ``` javascript
+                  var request = require("request");
+
+                  request("http://www.example.com", function (error, response, body) {
+                    if (!error && response.statusCode === 200) {
+                      console.log(body) // Show the HTML for the homepage.
+                    }
+                  });
+                  // ... dont have to wait to do stuff here
+                ```
+
+
+
+              </script>
+            </section>
+
+            <section data-markdown>
+              <script type="text/template">
+                  ## Non-blocking model
+                  Always program asynchronous!
+
+                  * callbacks (video)
+                  * promises (video)
+                  * generators + promises (video)
+                  * "await and async" - for the future...
+                  * Event Emitters (video)
+              </script>
+            </section>
+            </section>
+
             <section>
               <section data-markdown>
+                <script type="text/template">
+                    ## Multi threaded vs. single thread
+                    * Synchronous single thread - One request at time
+
+                    <p class="center">
+                      <img src="./images/singlesync.png" width="80%" alt="">
+
+                    </p>
+
+                </script>
+              </section>
+
+              <section data-markdown>
+                <script type="text/template">
+                    ## Multi threaded vs. single thread
+                    * Fork a process for each request
+                    * Having a thread pool and use a thread for each request
+                    <p class="center">
+                      <img src="./images/multithread.png" width="80%" alt="">
+                    </p>
+                </script>
+              </section>
+
+              <section data-markdown>
+                <script type="text/template">
+                    ## Multi threaded vs. single thread
+                    * Single thread asynchronous
+
+                    <p class="center">
+                      <img src="./images/singleasync.png" width="80%" alt="">
+
+                    </p>
+
+
+                </script>
+              </section>
+
+              <section data-markdown>
+                <script type="text/template">
+
+                    <p class="center">
+                      ![](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
+                    </p>
+                </script>
+              </section>
+
+              <section data-markdown>
+                <script type="text/template">
+                    ## Do it asynchrounous
+
+                    ```
+                    // avoid if users big
+                    function sortUsersByAge(users) {
+                    	users.sort(function(a, b) {
+                    		return a.age < b.age ? -1 : 1
+                    	});
+                    }
+                    ```
+
+                    ```
+                    // what if 25MB json?
+                    function requestHandler(req, res) {
+                      var body = req.rawBody; // Contains the POST body
+                      try {
+                         var json = JSON.parse(body);
+                         res.end(json.user.username);
+                      }
+                      catch(e) {
+                         res.end("FAIL");
+                      }
+                    }
+                    ```
+                </script>
+              </section>
+            </section>
+
+
+            <section>
+              <section data-markdown class="center">
                 <script type="text/template">
                     ## NPM
 
@@ -157,24 +277,33 @@
                 </script>
               </section>
 
-              <section data-markdown class="center">
+              <section data-markdown class="center noborderimages">
                 <script type="text/template">
                     ## NPM - package.json
-                    ![package.json](./images/package_json.png)
-
-                    A meta file in our projects root folder
+                    <img src="./images/package_json.png" alt="" width="50%">
 
                     https://docs.npmjs.com/files/package.json
                 </script>
               </section>
 
-              <section data-markdown class="center">
+              <section data-markdown class="center noborderimages">
                 <script type="text/template">
                     ## NPM - installing modules
                     Use npm to install others modules into your project!
-
+                    ```
+                    npm install mocha
+                    ```
+                    ```
+                    npm install mocha --save
+                    ```
                     ```
                     npm install mocha --save-dev
+                    ```
+                    ```
+                    npm install mocha -g
+                    ```
+                    ```
+                    npm install express --no-bin-links
                     ```
                     ![node_modules](./images/node_modules.png)
 
@@ -185,122 +314,31 @@
                 <script type="text/template">
                     ## About node modules
 
-                    * Add "node_modules" to your .gitignore
+                    * node will look for the local folder "node_modules" or globally in the directory node was installed
                     * Use require to use the modules in your code (after installing them)
-                      * ```
+                      ```
                       var express = require("express");
                       var own = require("./realativ/path/to/my_module.js");
                       var fileSystem = require("fs"); // node core module
                       ```
-                    * node will look for the local folder "node_modules" or globally in the directory node was installed
+                    * Add "node_modules" to your .gitignore (if you want)
                     * modules are cached
-                    https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
+
+                    https://docs.npmjs.com/
                 </script>
               </section>
           </section>
 
-          <section>
-            <section data-markdown>
-              <script type="text/template">
-                  ## How node works!
 
-                  * Non-blocking
-                  * Single threaded
-                  * Asynchronous
-                  * Event-driven
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ## Blocking vs. Non-blocking
-
-                  ```php
-                  <?php
-                    $homepage = file_get_contents('http://www.example.com/');
-                    echo $homepage;
-                  ?>
-                  ```
-
-                  ```javascript
-                  var request = require('request');
-                  request('http://www.example.com', function (error, response, body) {
-                    if (!error &amp;&amp; response.statusCode == 200) {
-                      console.log(body) // Show the HTML for the homepage.
-                    }
-                  });
-                  // ... dont have to wait to do stuff here
-                  ```
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ## Multi threaded vs. single thread
-
-                  * Synchronous single thread - One request at time
-                  * Fork a process for each request
-                  * Having a thread pool and use a thread for each request
-
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ## The event loop
-                  The event loop is the thing that handles and processes external events and converts them into callback calls
-
-                  See the event loop as the thing that checks when stuff happends and that all register callbacks is called.
-                  Since its single threaded the event loop can only process one task at the time
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ##  Pros and cons
-
-                  ### multi threaded
-
-                  ```
-                  // avoid if users big
-                  function sortUsersByAge(users) {
-                  	users.sort(function(a, b) {
-                  		return a.age < b.age ? -1 : 1
-                  	})
-                  }
-
-                  ```
-
-                  // what if 15MB json?
-                  ```
-                  function requestHandler(req, res) {
-                    var body = req.rawBody; // Contains the POST body
-                    try {
-                       var json = JSON.parse(body);
-                       res.end(json.user.username);
-                    }
-                    catch(e) {
-                       res.end("FAIL");
-                    }
-                  }
-                  ```
-
-              </script>
-            </section>
-
-            <section data-markdown>
-              <script type="text/template">
-                  ## Non-blocking model
-                  Always program asynchronous!
-
-                  * callbacks
-                  * promises
-                  * generators + promises
-                  * "await and async" - for the future...
-                  * Event Emitters
-              </script>
-            </section>
+          <section data-markdown class="center">
+            <script type="text/template">
+              ## ECMAScript 2015 (ES6) in Node.js
+              <a href="https://nodejs.org/en/docs/es6/">https://nodejs.org/en/docs/es6/></a>
+            </script>
           </section>
+
+          <section>
+
         </div>
     </div>
 
