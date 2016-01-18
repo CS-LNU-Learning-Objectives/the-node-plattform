@@ -46,7 +46,6 @@ pageLoad.fetch(url).then(function(data) {
 }).catch(function(error) {
   console.log(error);
 });
-
 */
 
 
