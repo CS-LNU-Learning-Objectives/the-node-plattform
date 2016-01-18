@@ -109,8 +109,9 @@
               </script>
             </section>
 
-            <section data-markdown class="center">
+            <section data-markdown>
               <script type="text/template">
+                <!-- .slide: class="center" -->
                   ## The Philosophy
 
                   * Small core
@@ -199,6 +200,7 @@
                     ## Multi threaded vs. single thread
                     * Fork a process for each request
                     * Having a thread pool and use a thread for each request
+
                     <p class="center">
                       <img src="./images/multithread.png" width="80%" alt="">
                     </p>
@@ -221,10 +223,9 @@
 
               <section data-markdown>
                 <script type="text/template">
+                    <!-- .slide: class="center" -->
+                    ![Node.js system](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
 
-                    <p class="center">
-                      ![](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
-                    </p>
                 </script>
               </section>
 
@@ -271,7 +272,7 @@
                     * packages/modules
                     * cli program
                       ```
-                      npm install <module_name>
+                      npm install
                       ```
 
                 </script>
@@ -294,19 +295,20 @@
                     npm install mocha
                     ```
                     ```
-                    npm install mocha --save
+                    npm install mocha --save           // Add to package.json under dependencies
                     ```
                     ```
-                    npm install mocha --save-dev
+                    npm install mocha --save-dev       // Add to package.json under devDependencies
                     ```
                     ```
-                    npm install mocha -g
+                    npm install mocha -g               // Install globally
                     ```
-                    ```
-                    npm install express --no-bin-links
-                    ```
+
                     ![node_modules](./images/node_modules.png)
 
+                    ```
+                    npm install express --no-bin-links // Windowshack?
+                    ```
                     </script>
               </section>
 
@@ -322,7 +324,7 @@
                       var fileSystem = require("fs"); // node core module
                       ```
                     * Add "node_modules" to your .gitignore (if you want)
-                    * modules are cached
+                    * Modules are cached
 
                     https://docs.npmjs.com/
                 </script>
@@ -333,12 +335,33 @@
           <section data-markdown class="center">
             <script type="text/template">
               ## ECMAScript 2015 (ES6) in Node.js
-              <a href="https://nodejs.org/en/docs/es6/">https://nodejs.org/en/docs/es6/></a>
+              <a href="https://nodejs.org/en/docs/es6/">https://nodejs.org/en/docs/es6/</a>
             </script>
           </section>
 
-          <section>
+          <section data-markdown>
+            <script type="text/template">
+              <!-- .slide: class="center" -->
+              ## Until next time...
 
+              * Read [the learning objects](https://coursepress.lnu.se/kurs/serverbaserad-webbprogrammering/introduction/)
+              * Repeat async programming (watch videos)
+              * Start exercise (when we created repos and publish info)
+              * Examination assignment will be out by the end of the week
+
+
+              ![read a book](http://www.geckosadventures.com/tales/wp-content/uploads/2014/12/UA7.gif)
+
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              <!-- .slide: class="center" -->
+              ## Tack och adjö för idag!
+              ![goodbye](http://www.reactiongifs.com/wp-content/uploads/2013/01/elvis-thanks.gif)
+            </script>
+          </section>
         </div>
     </div>
 
