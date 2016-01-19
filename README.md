@@ -10,8 +10,6 @@ This work i licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2
 * Philosophy
 * NPM - Node Package Manager
 * Non-blocking programming
-* Streams
-* Future
 * External Resources
 
 ## Goal
