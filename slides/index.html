@@ -81,11 +81,11 @@
           <section data-markdown>
               <script type="text/template">
                   <p  class="center"><img width="50%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt=""></p>
-
-                  * Not a framework!
+                  <!-- .slide: class="center" -->
                   * Not a web server!
-                  * Is not just for Web Sites/Applications!
-                  * It´s a platform!
+                  * Not a framework!
+                  * Not just for Web Sites!
+                  * A platform!
               </script>
             </section>
 
@@ -98,12 +98,14 @@
                   ## History of Node.js?
                   ![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ryan_Dahl.jpg/400px-Ryan_Dahl.jpg)
 
-                    * Ryan Dahl, 2009
-                    * Dropped out Math PhD, start coding web sites for money
-                    * Flickr Image upload, AJAX long polling
+                    * Ryan Dahl
+                    * Math PhD, start coding web sites
+                    * Flickr Image upload
                     * What language to use?
+                    * V8
                     * Six month, JSConf december 2009
                     * Joyent company
+                    * io.js => [Node.js Foundation](https://nodejs.org/en/foundation/)
 
 
               </script>
@@ -112,11 +114,10 @@
             <section data-markdown>
               <script type="text/template">
                 <!-- .slide: class="center" -->
-                  ## The Philosophy
+                  # The Philosophy
 
                   * Small core
                   * Small modules/packages
-                  * Small interfaces
                   * Simplicity and pragmatism
 
               </script>
@@ -128,9 +129,10 @@
                   ## characteristic
 
                   * Non-blocking
-                  * Single threaded
                   * Asynchronous
                   * Event-driven
+                  * Single threaded
+
               </script>
             </section>
 
@@ -145,12 +147,12 @@
                   blocking
                   ```
                   <?php
-                    $homepage = file_get_contents("http://www.example.com/");
+                    $homepage = file_get_contents("http://www.example.com");
                     echo $homepage;
                   ?>
                   ```
 
-                  non-blocking
+                  non-blocking - asynchronous
                   ``` javascript
                   var request = require("request");
 
@@ -169,14 +171,14 @@
 
             <section data-markdown>
               <script type="text/template">
-                  ## Non-blocking model
-                  Always program asynchronous!
+                <!-- .slide: class="center" -->
+                  ## Event-driven programming
 
                   * callbacks (video)
                   * promises (video)
                   * generators + promises (video)
+                  * Event Emitters (video...to come)
                   * "await and async" - for the future...
-                  * Event Emitters (video)
               </script>
             </section>
             </section>
@@ -214,9 +216,8 @@
 
                     <p class="center">
                       <img src="./images/singleasync.png" width="80%" alt="">
-
                     </p>
-
+                    [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
                 </script>
               </section>
@@ -241,8 +242,6 @@
                   * Resource-saving
                   * DIRT (Data-intensive real-time applications)
 
-                
-
                 </script>
               </section>
 
@@ -251,15 +250,17 @@
                   <!-- .slide: class="center noborderimages" -->
 
                   ## Cons
-                  * Not good at time consuming calculations
-
+                  * Not suited for CPU-intensive tasks
+                  * Harder programming models
+                  * Lack of maturity
+                  * Not a silverbullet!
 
                 </script>
               </section>
 
               <section data-markdown>
                 <script type="text/template">
-                    ## Do it asynchrounous
+                    ## Be aware!
 
                     ```
                     // avoid if users big
@@ -273,7 +274,7 @@
                     ```
                     // what if 25MB json?
                     function requestHandler(req, res) {
-                      var body = req.rawBody; // Contains the POST body
+                      var body = req.body; // Contains the POST body
                       try {
                          var json = JSON.parse(body);
                          res.end(json.user.username);
@@ -335,7 +336,7 @@
                     ![node_modules](./images/node_modules.png)
 
                     ```
-                    npm install express --no-bin-links // Windowshack?
+                    npm install express --no-bin-links // For windows on Vagrant
                     ```
                     </script>
               </section>
@@ -344,17 +345,15 @@
                 <script type="text/template">
                     ## About node modules
 
-                    * node will look for the local folder "node_modules" or globally in the directory node was installed
                     * Use require to use the modules in your code (after installing them)
                       ```
                       var express = require("express");
                       var own = require("./realativ/path/to/my_module.js");
                       var fileSystem = require("fs"); // node core module
                       ```
-                    * Add "node_modules" to your .gitignore (if you want)
-                    * Modules are cached
+                    * Modules are cached after the first time they are loaded.
 
-                    https://docs.npmjs.com/
+                    https://nodejs.org/api/modules.html
                 </script>
               </section>
           </section>
@@ -369,7 +368,7 @@
 
           <section data-markdown>
             <script type="text/template">
-              <!-- .slide: class="center" -->
+              <!-- .slide: class="center noborderimages" -->
               ## Until next time...
 
               * Read [the learning objects](https://coursepress.lnu.se/kurs/serverbaserad-webbprogrammering/introduction/)
@@ -378,7 +377,7 @@
               * Examination assignment will be out by the end of the week
 
 
-              ![read a book](http://www.geckosadventures.com/tales/wp-content/uploads/2014/12/UA7.gif)
+              ![read a book](http://cdn3.teen.com/wp-content/uploads/2013/10/world-without-books-gifs-baby-reading-2.gif)
 
             </script>
           </section>
