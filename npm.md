@@ -1,17 +1,17 @@
-# The Node Package Manager (NPM)
-Most of modern programming languages have some kind of a package manager, a way to share and use code. For JavaScript/Node that is npm, node package manager. Npm is bundle with node and should be installed when you install node.js. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [NPM web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
+# NPM - The Package manager for Node.js
+Most of modern programming languages have some kind of a package manager, a way to share and use code. For JavaScript/Node that is NPM, node package manager. NPM is bundle with node and should be installed when you install node.js. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [NPM web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
 
-This text will focus on the use of npm when you develop new node applications and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the NPM-documentation.
+This text will focus on the use of NPM when you develop new node applications and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the NPM-documentation.
 
 ## Understand the NPM cli
-When you got node.js installed you also got the npm program which let you write npm commands. Open up your terminal window and write:
+When you got node.js installed you also got the NPM program which let you write NPM commands. Open up your terminal window and write:
 
 ```
 npm -v
 ```
-This will output the version of npm that is installed on your system. The npm program have a lots of command we need to know about to be effective in our work.
+This will output the version of NPM that is installed on your system. The NPM program have a lots of command we need to know about to be effective in our work.
 
-### Install npm modules
+### Install NPM modules
 The most common task is to install a package to use in your program. A very common module is [lodash (https://www.npmjs.com/package/lodash)](https://www.npmjs.com/package/lodash) which is a utility library for javascript. Lets say we want to use that package in our program. Be sure that you are standing in your project folder in your terminal program. Then write:
 
 ```
@@ -25,10 +25,10 @@ Some times a module could be installed globally, installed so we can use it from
 ```
 npm install <name of the module> -g
 ```
-The npm program will then install the module in its global folder which depends on the operating system you´re using and in what folder node is installed. [More info about this at https://docs.npmjs.com/files/folders.](https://docs.npmjs.com/files/folders)
+The NPM program will then install the module in its global folder which depends on the operating system you´re using and in what folder node is installed. [More info about this at https://docs.npmjs.com/files/folders.](https://docs.npmjs.com/files/folders)
 
 ## The package.json file
-Every node project should have a package.json file (at least) in its root folder. This is a meta file that describes your project. Things like author, version, repo-URL is written to this file. The package.json also describes what dependencies your project has, that is what other npm packages it depends on.
+Every node project should have a package.json file (at least) in its root folder. This is a meta file that describes your project. Things like author, version, repo-URL is written to this file. The package.json also describes what dependencies your project has, that is what other NPM packages it depends on.
 
 Lets say you push your project to a GitHub repository for others to download and run. Should you also push up all the modules you using? It could be hundreds of folders with code. You probably put the node_modules-folder in your .gitignore file to avoid that and let the users install the modules by them self by reading in the package.json which modules your project needs. By running the command:
 ```
@@ -45,7 +45,7 @@ and
 npm install mocha --save-dev
 ```
 
-If you run these two command your package.json file whould look something like:
+If you run these two command your package.json file would look something like:
 
 ```
 {
