@@ -1,15 +1,15 @@
 ### Event-driven programming
-When Ryan Dahl started to developed node.js he was looking for a way to write a non-blocking server. He tried many different languages like C and Lua but it was when he realized how the nature of javascript would perfect as the language pushing his project forward. Javascript has models for asynchronous programming, have closures and when Google (the danish deparment) released their V8-engine at the same time he went for javascript as the language for the node platform.
+When Ryan Dahl started to developed node.js he was looking for a way to write a non-blocking server. He tried many different languages like C and Lua but it was when he realized how the nature of JavaScript would perfect as the language pushing his project forward. JavaScript has models for asynchronous programming, have closures and when Google (the danish deparment) released their V8-engine at the same time he went for javascript as the language for the node platform.
 
-If you read the text above you realize that nodes single-threaded natures calls for some way to program to create this callbacks that are needed. When you read about node you will hear about this as event-driven programming. You should already be familiar with javascript and asynchronous programming. Many programmers have used languages like PHP and JAVA before and are used to a more synchronous approach, that meaning the code executes row by row, from top to bottom.
+If you read the text above you realize that nodes single-threaded natures calls for some way to program to create this callbacks that are needed. When you read about Node.js you will hear about this as event-driven programming. You should already be familiar with javascript and asynchronous programming. Many programmers have used languages like PHP and JAVA before and are used to a more synchronous approach, that meaning the code executes row by row, from top to bottom.
 
 ```
 $homepage = file_get_contents('http://www.example.com/'); // this is blocking code
-echo $homepage; // the data is here to write out
+echo $homepage; // Write the data to the output
 ```
-The example above is PHP code and waits for each row to execute before the echo statement is executed. The file_get_contents-funktion is reading a page from the network and it can take some time meaning this thread i blocked. Thats not a good thing if you are in a single threaded environment but ok if your in a multithreaded.
+The example above is PHP code and waits for the first row to execute before the echo statement is executed. The file_get_contents-funktion is reading a page from the network and it can take some time meaning this thread i blocked. Thats not a good thing if you are in a single threaded environment but ok if your in a multithreaded.
 
-In javascript/node we have many examples of asynchronous programming where the program doesn´t stop and wait for the call to be ready.
+In JavaScript we have many examples of asynchronous programming where the program doesn´t stop and wait for the call to be ready.
 
 ```
 var req = new XMLHttpRequest();
@@ -24,7 +24,7 @@ console.log(req.responseText); // UNDEFINED!!!!
 ```
 As you can see above we add an event handler where we write the code we want to run when the event has happened (in this case the load event of the XMLHttpRequest object). Its important to understand that the last row in the example will print out undefined cause that code will run before the load-event has trigged and the data has arrived. You should all know about the javascript queue and how events are handled by the browser.
 
-In node we use to talk about "the event loop" which works in similar ways. One thing to remember about node is that all code runs in one single thread. On other platforms there could be code running in multiple threads independent of each other. That means that many parallel processes (as web request to a web server) would fork a new thread and run its code in this. This has some pros but if you got a lot of requests/processes many threads will be created and the server needs a lot of hardware. Since node has a single thread with an event loop it doesn´t spend time/resources waiting for things to finished. Instead it is able to sequentially execute a number of tasks very rapidly. This is why Node is so fast and could maintain good performance on smaller hardware servers.
+In Node.js we use to talk about "the event loop" which works in similar ways. One thing to remember about node is that all code runs in one single thread. On other platforms there could be code running in multiple threads independent of each other. That means that many parallel processes (as web request to a web server) would fork a new thread and run its code in this. This has some pros but if you got a lot of requests/processes many threads will be created and the server needs a lot of hardware. Since node has a single thread with an event loop it doesn´t spend time/resources waiting for things to finished. Instead it is able to sequentially execute a number of tasks very rapidly. This is why Node is so fast and could maintain good performance on smaller hardware servers.
 
 
 ### How to do event-driven programming?
@@ -147,7 +147,10 @@ doStuff().then(function(value) {
 As you can see above as long as we return a Promise object we can chain those calls to be don in a serial order and handling the errors in the last catch statement in a more readable way then when we using callbacks.
 
 #### Generators
-Generators (also known as semi-coroutins) is supported at the node platform (>= 4.x). Together with promises it can handle asynchronous programming but it looks more like synchronous which is easier to read. Generators let the developer suspend code in a function and resume at a later point. The code below illustrates generators in general.
+Generators (also known as semi-coroutins) is supported at the Node.js platform (>= 4.x). Together with promises it can handle asynchronous programming but it looks more like synchronous which is easier to read. Generators let the developer suspend code in a function and resume at a later point. 
+You should maybe see generators more like a hint what it will look like in coming versions of JavaScript where [features as "async" and "await" will be available](https://www.twilio.com/blog/2015/10/asyncawait-the-hero-javascript-deserved.html).
+
+The code below illustrates generators in general.
 
 ```
 function* generatorFn () {
