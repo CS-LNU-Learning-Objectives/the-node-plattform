@@ -4,27 +4,31 @@ var HomeAutomation = require("./lib/homeautomation");
 var ha = new HomeAutomation();
 
 ha.on("error", function(error) {
-  console.log(error);
+  console.log("Error: " + error.message);
 });
 
-ha.on("changeState", function(changeObject) {
-  console.log(changeObject);
+// we do something wrong
+//ha.setMode("Bad mode");
+
+ha.on("change", function(state) {
+  console.log(state);
 });
 
-// -------- Bulb on --------
-ha.bulbOn("living room");
-ha.bulbOn("hall");
-
-// -------- Bulb off --------
-ha.bulbOff("hall");
-ha.bulbOff("living room");
-
-
-// -------- Handling status --------
-ha.setMode("home");
-
-ha.setMode("Bad mode");
-
+//ha.setMode("home");
 setTimeout(function() {
   ha.setMode("away");
-}, 4000);
+}, 5000);
+
+
+
+
+/*
+// we are getting home
+var result = ha.setMode("home");
+console.log(result);
+
+// after a while (5s) we went away
+setTimeout(function() {
+  var result = ha.setMode("away");
+  console.log(result);
+}, 5000);*/
