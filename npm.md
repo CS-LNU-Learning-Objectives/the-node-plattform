@@ -1,9 +1,9 @@
 # The Node Package Manager (NPM)
-Most of modern programming languages have some kind of a package manager, a way to share and use code. For javascript/Node that is npm, node package manager. Npm is bundle with node and should be installed when you install node. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [npm web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
+Most of modern programming languages have some kind of a package manager, a way to share and use code. For JavaScript/Node that is npm, node package manager. Npm is bundle with node and should be installed when you install node.js. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [NPM web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
 
-This text will focus on the use of npm when you develop new node applications and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the documentation.
+This text will focus on the use of npm when you develop new node applications and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the NPM-documentation.
 
-## Understand the npm cli
+## Understand the NPM cli
 When you got node.js installed you also got the npm program which let you write npm commands. Open up your terminal window and write:
 
 ```
@@ -17,7 +17,7 @@ The most common task is to install a package to use in your program. A very comm
 ```
 npm install lodash
 ```
-That means that you are going to install the lodash package in your project folder. You may see that a new folder is created, node_modules. This is the folder node will look for installed modules when you trying to require/use them in your code. If you look in that folder you will find the module and all its code installed in the lodash folder.
+That means that you are going to install the lodash package in your project folder. You may see that a new folder is created, *node_modules*. This is the folder node will look for installed modules when you trying to require/use them in your own code. If you look in that folder you will find the module and all its code installed in the lodash folder.
 
 We have installed the module locally, that is installed it in our project folder. This is the most common way to work with modules in your applications.
 
@@ -28,9 +28,9 @@ npm install <name of the module> -g
 The npm program will then install the module in its global folder which depends on the operating system you´re using and in what folder node is installed. [More info about this at https://docs.npmjs.com/files/folders.](https://docs.npmjs.com/files/folders)
 
 ## The package.json file
-Every node project should have a package.json file (at least) in its root folder. This is a meta file that describes your project. Thing as author, version, repo-URL is written to this file. The package.json also describes what dependencies your project has, that is what other npm packages it depends on.
+Every node project should have a package.json file (at least) in its root folder. This is a meta file that describes your project. Things like author, version, repo-URL is written to this file. The package.json also describes what dependencies your project has, that is what other npm packages it depends on.
 
-Lets say you push your project to a repo for others to download and run. Should you also push up all the modules you using? It could be hundreds of folders with code. You probably put the node_modules-folder in your .gitignore file to avoid that and let the users install the modules by them self by reading in the package.json which modules your project needs. By running the command:
+Lets say you push your project to a GitHub repository for others to download and run. Should you also push up all the modules you using? It could be hundreds of folders with code. You probably put the node_modules-folder in your .gitignore file to avoid that and let the users install the modules by them self by reading in the package.json which modules your project needs. By running the command:
 ```
 npm install
 ```
@@ -75,11 +75,14 @@ As you see this is pure JSON and you can probably figure out most of the stuff. 
 As you can see it also specifies which version (pr major/minor version) to install when running "npm install" on this package-file.
 There are many ways of specifying versions in the package.json. More information see: https://docs.npmjs.com/files/package.json#dependencies
 
-If no sign is provided it will always install just that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production.
+If no sign is provided it will always install just that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production. The version system used by node-modules is built on the [Semantic Versioning guidelines.](http://semver.org/)
+
+## NPM Shrinkwrap
+As you may wonder this could lead to problems, especially when handling modules in a production environment. By default, ´npm install´  recursively installs all the dependencies that the modules specified in your package.json have using the above described semver patterns. When shipping code we don´t want some modules be of an other versions then the one used when building the software. To fix this problem we can yse the `npm shrinkwrap` command. For more information [consult the documentation](https://docs.npmjs.com/cli/shrinkwrap).
 
 
 ## NPM as a build tool
-Most front-end developers know about build tools as grunt or gulp. But you can also use npm for this.
+Most front-end developers know about build tools as [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/). But you can also use npm for this.
 This is out of scope for this text but if you are interested in this you should check out [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
 
 ## Further reading
