@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>The Node plattform</title>
+    <title>The Node platform</title>
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -42,7 +42,7 @@
         <div class="slides">
             <!-- Start -->
             <section class="center" data-state="lnu-intro">
-                <h3>The Node Plattform</h3>
+                <h3>The Node Platform</h3>
                 <h3>Learning Object</h3>
                 <h1>Linnaeus University</h1>
                 <div class="lnu-footer">
@@ -176,8 +176,8 @@
 
                   * callbacks (video)
                   * promises (video)
-                  * generators + promises (video)
-                  * Event Emitters (video...to come)
+                  * generators + promises
+                  * Event Emitters (video)
                   * "await and async" - for the future...
               </script>
             </section>
@@ -213,7 +213,6 @@
                 <script type="text/template">
                     ## Multi threaded vs. single thread
                     * Single thread asynchronous
-
                     <p class="center">
                       <img src="./images/singleasync.png" width="80%" alt="">
                     </p>
@@ -264,19 +263,19 @@
 
                     ```
                     // avoid if users big
-                    function sortUsersByAge(users) {
-                    	users.sort(function(a, b) {
-                    		return a.age < b.age ? -1 : 1
-                    	});
+                    let sortUsersByAge = (users) => {
+                      return users.sort( (a, b) => { return a.age < b.age ? -1 : 1} ).slice();
                     }
+
+
                     ```
 
                     ```
                     // what if 25MB json?
-                    function requestHandler(req, res) {
-                      var body = req.body; // Contains the POST body
+                    let requestHandler = (req, res) => {
+                      let body = req.body; // Contains the POST body
                       try {
-                         var json = JSON.parse(body);
+                         let json = JSON.parse(body);
                          res.end(json.user.username);
                       }
                       catch(e) {
@@ -294,7 +293,7 @@
                 <script type="text/template">
                     ## NPM
 
-                    Node Package Manager
+                    A package manager for Node.js
 
                     * Bundled with node
                     * Easy for sharing and reusing javascript code
@@ -348,7 +347,7 @@
                     * Use require to use the modules in your code (after installing them)
                       ```
                       var express = require("express");
-                      var own = require("./realativ/path/to/my_module.js");
+                      var own = require("./realativ/path/to/my_module");
                       var fileSystem = require("fs"); // node core module
                       ```
                     * Modules are cached after the first time they are loaded.
@@ -374,7 +373,7 @@
               * Read [the learning objects](https://coursepress.lnu.se/kurs/serverbaserad-webbprogrammering/introduction/)
               * Repeat async programming (watch videos)
               * Start exercise (when we created repos and publish info)
-              * Examination assignment will be out by the end of the week
+              * Examination assignment will be out soon...
 
 
               ![read a book](http://cdn3.teen.com/wp-content/uploads/2013/10/world-without-books-gifs-baby-reading-2.gif)
