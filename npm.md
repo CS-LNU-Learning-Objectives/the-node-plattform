@@ -85,6 +85,10 @@ As you may wonder this could lead to problems, especially when handling modules 
 Most front-end developers know about build tools as [Grunt](http://gruntjs.com/) or [Gulp](http://gulpjs.com/). But you can also use npm for this.
 This is out of scope for this text but if you are interested in this you should check out [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
 
+## NPMs weakness 
+Early 2016 the npm community suffered a lot when the user Azer Koçulu removed more than 250 packages from NPM. Among thoose removed packages one in particular, left-pad, was used by many open source projects resulting in broken build processes all over. [How one developer just broke Node, Babel and thousands of projects in 11 lines of JavaScript
+](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)
+
 ## Further reading
 * https://docs.npmjs.com/
 * https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
