@@ -78,7 +78,7 @@ There are many ways of specifying versions in the package.json. More information
 If no sign is provided it will always install just that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production. The version system used by node-modules is built on the [Semantic Versioning guidelines.](http://semver.org/)
 
 ## NPM Shrinkwrap
-As you may wonder this could lead to problems, especially when handling modules in a production environment. By default, ´npm install´  recursively installs all the dependencies that the modules specified in your package.json have using the above described semver patterns. When shipping code we don´t want some modules be of an other versions then the one used when building the software. To fix this problem we can yse the `npm shrinkwrap` command. For more information [consult the documentation](https://docs.npmjs.com/cli/shrinkwrap).
+As you may wonder this could lead to problems, especially when handling modules in a production environment. By default, ´npm install´  recursively installs all the dependencies that the modules specified in your package.json have using the above described semver patterns. When shipping code we don´t want some modules be of an other versions then the one used when building the software. To fix this problem we can use the `npm shrinkwrap` command. For more information [consult the documentation](https://docs.npmjs.com/cli/shrinkwrap).
 
 
 ## NPM as a build tool
