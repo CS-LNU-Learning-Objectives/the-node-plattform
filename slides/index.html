@@ -144,7 +144,7 @@
               <script type="text/template">
                   ## Blocking vs. Non-blocking
 
-                  blocking
+                  Blocking
                   ```
                   <?php
                     $homepage = file_get_contents("http://www.example.com");
@@ -152,9 +152,9 @@
                   ?>
                   ```
 
-                  non-blocking - asynchronous
+                  Non-blocking - asynchronous
                   ``` javascript
-                  var request = require("request");
+                  let request = require("request");
 
                   request("http://www.example.com", function (error, response, body) {
                     if (!error && response.statusCode === 200) {
@@ -176,9 +176,8 @@
 
                   * callbacks (video)
                   * promises (video)
-                  * generators + promises
                   * Event Emitters (video)
-                  * "await and async" - for the future...
+                  * "await and async" - now supported in Node.js
               </script>
             </section>
             </section>
@@ -289,20 +288,20 @@
 
 
             <section>
-              <section data-markdown class="center">
+              <section data-markdown>
                 <script type="text/template">
                     ## NPM
 
                     A package manager for Node.js
 
-                    * Bundled with node
+                    * Bundled with Node
                     * Easy for sharing and reusing javascript code
                     * packages/modules
                     * cli program
                       ```
                       npm install
                       ```
-
+                    * There are alternatives (like yarn)
                 </script>
               </section>
 
@@ -357,14 +356,14 @@
               </section>
           </section>
 
-
+<!--
           <section data-markdown class="center">
             <script type="text/template">
               ## ECMAScript 2015 (ES6) in Node.js
               <a href="https://nodejs.org/en/docs/es6/">https://nodejs.org/en/docs/es6/</a>
             </script>
           </section>
-
+-->
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
@@ -373,7 +372,7 @@
               * Read [the learning objects](https://coursepress.lnu.se/kurs/serverbaserad-webbprogrammering/introduction/)
               * Repeat async programming (watch videos)
               * Start exercise (when we created repos and publish info)
-              * Examination assignment will be out soon...
+              * When ready start Examination assignment...
 
 
               ![read a book](http://cdn3.teen.com/wp-content/uploads/2013/10/world-without-books-gifs-baby-reading-2.gif)
