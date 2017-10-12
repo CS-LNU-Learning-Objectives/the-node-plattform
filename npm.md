@@ -1,5 +1,5 @@
 # NPM - The Package manager for Node.js
-Most of modern programming languages have some kind of a package manager, a way to share and use code. For JavaScript/Node that is NPM, node package manager. NPM is bundle with node and should be installed when you install node.js. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [NPM web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
+Most of modern programming languages have some kind of a package manager, a way to share and use code. For JavaScript/Node that is NPM, a package manager for node modules. NPM is bundle with node and should be installed when you install node.js. NPM is the tool that help us to install, organize and use node packages. That could be modules developed by you or by other developers and that is available through the [NPM web site (https://www.npmjs.com/)](https://www.npmjs.com/). This could be used as a global service where developers contribute with modules  you can use in your applications. Remember, small core, many and small modules/packages.
 
 This text will focus on the use of NPM when you develop new node applications and not how you publish your own modules. This is not a complete guide so be prepared to seek information in the NPM-documentation.
 
@@ -36,7 +36,7 @@ npm install
 ```
 node will look for the package.json file and figure out which modules it will need to install.
 
-So when you install a module in your project with "npm install <name of the module>" you should also add the module name to your package.json. You can do this by using the flag --save or --save-dev, where --save-dev is for packages we´re just using when developing and not in production. That could be packages for testing, hinting, code coverage and things like that. An example of this could be:
+So when you install a module in your project with "npm install <name of the module>" you should also add the module name to your package.json. You can do this by using the flag --save or --save-dev, where --save-dev is for packages we´re just using when developing and not in production. That could be packages for testing, hinting, code coverage and things like that. [Since version > 5.0 of npm the `--save` flag will be added by default](http://blog.npmjs.org/post/161081169345/v500). An example of this could be:
 ```
 npm install lodash --save
 ```
