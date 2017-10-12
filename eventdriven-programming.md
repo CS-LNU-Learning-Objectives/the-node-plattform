@@ -91,16 +91,8 @@ asyncOne(function(err) {
 });
 ```
 This is from a case where three async functions is called after each other in the order asyncOne, asyncTwo, asyncThree. Since we must wait for each turn our code is getting messy (and we don´t have any error handling). You can probably see what this is leading! Its leading to callback hell! When your code start to get wide watch up!
-How could we implement a good error handling in this example? Start renaming the parameters to different them in different scope? Its also a place for memory leaks. Of course we can refactor our code to be better but lets move on to other solutions!
+How could we implement a good error handling in this example? Start renaming the parameters to different them in different scope? Its also a place for memory leaks. Of course we can refactor our code to be better but lets move on to other solutions! But it is important to know this pattern since many of the modules you will use are implemented this way.
 
-#### Async module
-Since the Node platform supports different modules outside the core we could of course use a module (we often hear "there is a module for that!"). One of the more popular are the async library which is build for async programming. The module could be found at: https://www.npmjs.com/package/async and you simple install it through npm:
-```
-npm install async --save
-```
-The module let you set up functions that should be called parallel or in series and you could write your code more as if your where coding in a synchronous way.
-
-You can found more examples of how to use the async module see the link above. Of course there are other module that do the same thing. Search the npm web site for alternatives.
 
 #### Promises
 These days javascript have other ways to deal with this problem. One common solution is promises. Promises will be a core feature in the ES2015 (ES6) specification and that means that promises now is supported in the node platform without any extra modules, its now a feature well worth learning! Check it out at: [https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise).
@@ -146,62 +138,24 @@ doStuff().then(function(value) {
 ```
 As you can see above as long as we return a Promise object we can chain those calls to be don in a serial order and handling the errors in the last catch statement in a more readable way then when we using callbacks.
 
-#### Generators
-Generators (also known as semi-coroutins) is supported at the Node.js platform (>= 4.x). Together with promises it can handle asynchronous programming but it looks more like synchronous which is easier to read. Generators let the developer suspend code in a function and resume at a later point.
-You should maybe see generators more like a hint what it will look like in coming versions of JavaScript where [features as "async" and "await" will be available](https://www.twilio.com/blog/2015/10/asyncawait-the-hero-javascript-deserved.html).
+#### Async & Await
+Since node version 8 we have a better(?) way to handle our asynchronous programming. A way that sometimes look confusingly much like syncronous programming - async and await. This is a new way to write our asynchronous, non-blocking code and is built on promises (in some situations you propably still will use promises)
 
-The code below illustrates generators in general.
-
+Here is a small example:
 ```
-function* generatorFn () {
-  console.log('I was suspended')
+const getData = async () => {
+    let data = await getDataFromServer()
+    return data
 }
-var generator = generatorFn()
-setTimeout(function () {
-  generator.next()
-}, 2000)
 ```
+The function that we want to take care of the asynchronous call will have the keyword async before it. Inside the funtion we can then use the await keyword which means that the call will wait until the getDataFromServer() will resolve the promise. The async function will return a promise and teh resolved value will be what you return from that function.
 
-The function above is a generator function and we can see that by the \*-character after the function word. This means that this function will by default be run in a suspended mode, no console.log will be executed. But when we call next on that function it will execute the statement, in this case after two seconds.
-
-```
-function* channel () {
-  var name = yield 'Hello, what is your name?';
-  return 'Hello there ' + name;
-}
-var gen = channel()
-console.log(gen.next().value) // Hello, what is your name?
-console.log(gen.next('John')) // { value: 'Hello there John', done: true }
-```
-
-By using the keyword "yield" in our generator function we can stop the code and demand a call the next-function to continue run the code in the function. These code examples were taken from https://strongloop.com/strongblog/how-to-generators-node-js-yield-use-cases/ so check out that article for more information about generators.
-
-So what have this to do with async programming you may ask. Well you can write code that just uses generators and handle asynchronous programming but in this case we will combining promises and generators so we can find a really simple code structure for handling async programing in node.js. In this example we´re using the package [co](https://github.com/tj/co) which is a so called "generator-based-control-flow library".
-
-```
-var co = require("co");
-
-co(function*() {
-  // the next *yield* will only run after the previous *yield* is done
-  // like sync code
-  var result1 = yield getData(); // returns a promise
-  var result2 = yield getData2(result1); // returns a promise
-  var result3 = yield getData3(result2); // returns a promise
-  return result3;
-}).then(function(result) {
-  // single 'then' to handle the final return value
-  console.log(result);
-}, function(err) {
-  console.log(err);
-});
-```
-The code above is handling three async calls in a series. The code looks just like synchronous programming with the advantage of the underlying asynchronous programming model.
-
-This is how it probably will look in coming versions of javascript where features as "async" and "await" will be available.
+As you can see this give you a cleaner syntax. It will also give you a better way to handling errors when combining asynchronous and syncronous calls (like JSON.parse). We can then use the try/catch syntax. There are even more cases when the async/await syntax will be a better option so be sure to learn how to use it. To learn more about it read this article:
+https://hackernoon.com/6-reasons-why-javascripts-async-await-blows-promises-away-tutorial-c7ec10518dd9
 
 
 #### EventEmitter
-One other thing that we also should know about is Event Emitters. This is the ability to define own custom events and fire those to all that has a listener bind to that event. If you think about it with callbacks and promises we could just be called once when a certain thing happen. What if there is some kind of event that happens more than one time? Or if we would have some kind of way to have multiple observers that gets notify when the event happens. In programing you often talks about implementing the observer pattern as an solution to this. I node.js we have the observer pattern built into the core and is available through the EventEmitter class. The Event-emitter allows us to register one or many functions to be called when a particular event type is fired.
+One other thing that we also should know when coding in node.js is Event Emitters. This is the ability to define own custom events and fire those to all that has a listener bind to that event. If you think about the above techniques they could just be called once when a certain thing happen. What if there is some kind of event that happens more than one time? Or if we would have some kind of way to have multiple observers that gets notify when the event happens. In programing you often talks about implementing the [observer pattern](https://en.wikipedia.org/wiki/Observer_pattern) as an solution to this. In Node.js we have the observer pattern built into the core and is available through the EventEmitter class. The Event-emitter allows us to register one or many functions to be called when a particular event type is fired.
 
 Here is a example to show this taken from the book "Node.js design patterns" by Mario Casciaro: http://www.nodejsdesignpatterns.com/
 ```
