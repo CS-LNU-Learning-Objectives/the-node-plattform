@@ -86,10 +86,9 @@
                   * Not a framework!
                   * Not just for Web Sites!
                   * A platform!
+                    * Like ASP.NET, PHP...
               </script>
             </section>
-
-
 
             <section data-markdown>
               <script type="text/template">
@@ -98,35 +97,29 @@
                   ## History of Node.js?
                   ![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ryan_Dahl.jpg/400px-Ryan_Dahl.jpg)
 
-                    * Ryan Dahl
-                    * Math PhD, start coding web sites
-                    * Flickr Image upload
-                    * What language to use?
-                    * V8
+                    * Ryan Dahl, San Diego, California
+                    * Dropped out of Math PhD program
+                    * Start coding web sites
+                    * Flickr Image upload progress bar
+                    * V8, Google chrome javascript engine, an event loop, and a low-level I/O API (libuv)
                     * Six month, JSConf december 2009
-                    * Joyent company
-                    * io.js => [Node.js Foundation](https://nodejs.org/en/foundation/)
-
-
+                    * [Node.js Foundation](https://nodejs.org/en/foundation/)
               </script>
             </section>
 
             <section data-markdown>
               <script type="text/template">
-                <!-- .slide: class="center" -->
-                  # The Philosophy
+                  ## The Philosophy
 
                   * Small core
-                  * Small modules/packages
-                  * Simplicity and pragmatism
+                  * Small modules/packages (using npm)
 
               </script>
             </section>
 
             <section data-markdown>
               <script type="text/template">
-                <!-- .slide: class="center" -->
-                  ## characteristic
+                  ## Characteristic
 
                   * Non-blocking
                   * Asynchronous
@@ -149,6 +142,8 @@
                   <?php
                     $homepage = file_get_contents("http://www.example.com");
                     echo $homepage;
+
+                    // Must wait to do stuff here...
                   ?>
                   ```
 
@@ -160,7 +155,8 @@
                     if (!error && response.statusCode === 200) {
                       console.log(body) // Show the HTML for the homepage.
                     }
-                  });
+                    ...
+                  })
                   // ... dont have to wait to do stuff here
                 ```
 
@@ -171,49 +167,41 @@
 
             <section data-markdown>
               <script type="text/template">
-                <!-- .slide: class="center" -->
-                  ## Event-driven programming
+                 ## Event-driven programming
 
-                  * callbacks (video)
-                  * promises (video)
+                  * Callbacks (video)
+                  * Promises (video)
                   * Event Emitters (video)
-                  * "await and async" - now supported in Node.js
+                  * "Await and Async" - supported in Node.js
               </script>
             </section>
             </section>
 
             <section>
-              <section data-markdown>
-                <script type="text/template">
-                    ## Multi threaded vs. single thread
-                    * Synchronous single thread - Not best solution for a web server...
-
-                    <p class="center">
-                      <img src="./images/singlesync.png" width="80%" alt="">
-
-                    </p>
-
-                </script>
-              </section>
-
+             
               <section data-markdown>
                 <script type="text/template">
                     ## Multi threaded vs. single thread
                     * Fork a process for each request
                     * Having a thread pool and use a thread for each request
+                      * Wait for availible threads, taking system RAM, context switching
+                      * Lots of idle in each thread, waiting for data from connection, I/O blocking the thread
 
                     <p class="center">
-                      <img src="./images/multithread.png" width="80%" alt="">
+                      <img src="./images/multithread.png" width="60%" alt="">
                     </p>
                 </script>
               </section>
 
               <section data-markdown>
                 <script type="text/template">
-                    ## Multi threaded vs. single thread
+                    ### Multi threaded vs. single thread
                     * Single thread asynchronous
+                    * Can handle more connection, more light-weight
+                      * Beware of heavy computation that choke up the single thread
+                      * Beware of allowing exceptions bubbling up to the core (topmost) Node.js event loop
                     <p class="center">
-                      <img src="./images/singleasync.png" width="80%" alt="">
+                      <img src="./images/singleasync.png" width="55%" alt="">
                     </p>
                     [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
 
@@ -232,26 +220,24 @@
 
               <section data-markdown>
                 <script type="text/template">
-                  <!-- .slide: class="center noborderimages" -->
-                  ## Pros
+                  ## When to use Node.js
 
-                  * Javascript everywhere (JSON data)
-                  * Handle many request
-                  * Resource-saving
-                  * DIRT (Data-intensive real-time applications)
-
+                  * Javascript everywhere!
+                  * Server-side web applications
+                    * No CPU intensive computation
+                    * API on top of a JSON Storage Object DB
+                    * Front-end servers
+                  * Realtime applications
+                    * Handling realtime event from server to clients
                 </script>
               </section>
 
               <section data-markdown>
                 <script type="text/template">
-                  <!-- .slide: class="center noborderimages" -->
-
-                  ## Cons
+                  ## When NOT to use Node.js
                   * Not suited for CPU-intensive tasks
-                  * Harder programming models
-                  * Lack of maturity
-                  * Not a silver bullet!
+                  * Use clustering to offload all heavy computation to background services
+                    * There is a [cluster module in Node.js](https://nodejs.org/api/cluster.html)
 
                 </script>
               </section>
@@ -260,25 +246,16 @@
                 <script type="text/template">
                     ## Be aware!
 
+                   
                     ```
-                    // avoid if users big
-                    let sortUsersByAge = (users) => {
-                      return users.sort( (a, b) => { return a.age < b.age ? -1 : 1} ).slice();
-                    }
-
-
-                    ```
-
-                    ```
-                    // what if 25MB json?
                     let requestHandler = (req, res) => {
-                      let body = req.body; // Contains the POST body
+                      let body = req.body // Contains the POST body the client sends
                       try {
-                         let json = JSON.parse(body);
-                         res.end(json.user.username);
+                         let json = JSON.parse(body)
+                         res.end(json.user.username)
                       }
                       catch(e) {
-                         res.end("FAIL");
+                         res.end("FAIL")
                       }
                     }
                     ```
@@ -301,7 +278,7 @@
                       ```
                       npm install
                       ```
-                    * There are alternatives (like yarn)
+                    * There are alternatives (like [yarn](https://yarnpkg.com/en/))
                 </script>
               </section>
 
@@ -322,21 +299,27 @@
                     npm install mocha
                     ```
                     ```
-                    npm install mocha --save           // Add to package.json under dependencies
+                    npm install mocha --save           // Add to package.json under dependencies (default now)
                     ```
                     ```
                     npm install mocha --save-dev       // Add to package.json under devDependencies
                     ```
                     ```
-                    npm install mocha -g               // Install globally
+                    npm install mocha -g               // Install globally on computer
                     ```
 
                     ![node_modules](./images/node_modules.png)
-
-                    ```
-                    npm install express --no-bin-links // For windows on Vagrant
-                    ```
+                    
                     </script>
+              </section>
+
+              <section data-markdown class="center noborderimages">
+                <script type="text/template">
+                    ## NPM - package-lock.json
+                    <img src="./images/package_json.png" alt="" width="50%">
+
+                    https://docs.npmjs.com/files/package.json
+                </script>
               </section>
 
               <section data-markdown class="center">
@@ -345,9 +328,9 @@
 
                     * Use require to use the modules in your code (after installing them)
                       ```
-                      var express = require("express");
-                      var own = require("./realativ/path/to/my_module");
-                      var fileSystem = require("fs"); // node core module
+                      var express = require('express')
+                      var own = require('./realativ/path/to/my_module')
+                      var fileSystem = require('fs'); // node core module
                       ```
                     * Modules are cached after the first time they are loaded.
 
@@ -383,7 +366,7 @@
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center" -->
-              ## Tack och adjö för idag!
+              ## Thank you and goodbye!
               ![goodbye](http://www.reactiongifs.com/wp-content/uploads/2013/01/elvis-thanks.gif)
             </script>
           </section>
