@@ -282,7 +282,25 @@
                 </script>
               </section>
 
-              <section data-markdown class="center noborderimages">
+              <section data-markdown class="noborderimages">
+                <script type="text/template">
+                    ## app.js 
+                    
+                    ```
+                    const lodash = require('lodash')
+                    
+                    // use the modules shuffle method
+                    let res = lodash.shuffle([1, 2, 3, 4])
+                    
+                    // => [4, 1, 3, 2]
+                    console.log(res)
+                    ```
+
+                    https://nodejs.org/api/modules.html
+                </script>
+              </section>
+
+              <section data-markdown class="noborderimages">
                 <script type="text/template">
                     ## NPM - package.json
                     <img src="./images/package_json.png" alt="" width="50%">
@@ -291,21 +309,21 @@
                 </script>
               </section>
 
-              <section data-markdown class="center noborderimages">
+              <section data-markdown class="noborderimages">
                 <script type="text/template">
                     ## NPM - installing modules
                     Use npm to install others modules into your project!
-                    ```
+                    ```bash
+                    # Add to package.json under dependencies
                     npm install mocha
                     ```
+                    ```bash
+                    # Add to package.json under devDependencies
+                    npm install mocha --save-dev 
                     ```
-                    npm install mocha --save           // Add to package.json under dependencies (default now)
-                    ```
-                    ```
-                    npm install mocha --save-dev       // Add to package.json under devDependencies
-                    ```
-                    ```
-                    npm install mocha -g               // Install globally on computer
+                    ```bash
+                    # Install globally on computer - no add to package.json
+                    npm install mocha -g 
                     ```
 
                     ![node_modules](./images/node_modules.png)
@@ -313,30 +331,40 @@
                     </script>
               </section>
 
-              <section data-markdown class="center noborderimages">
+              <section data-markdown>
+                <script type="text/template">
+                ```
+                "dependencies": {
+                  "lodash": "^3.7.2"
+                }
+                ```
+
+                
+                * Semantic Versioning (semver)
+                  * major.minor.patch
+                * "^3.7.2" - caret
+                  * `npm install` could install 3.9.9
+                * "~3.7.2" - tilde
+                  * `npm install` could install 3.7.9
+                * `npm update` - check for newer versions, bug fixes...
+                
+                </script>
+              </section>
+              
+
+              <section data-markdown class="noborderimages">
                 <script type="text/template">
                     ## NPM - package-lock.json
-                    <img src="./images/package_json.png" alt="" width="50%">
+                    * Is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. 
+                    * It describes the exact tree that was generated
+                      * install exactly the same dependencies - fixed versions
+                    * Should be pushed to your repository
 
-                    https://docs.npmjs.com/files/package.json
+                    https://docs.npmjs.com/files/package-lock.json
                 </script>
               </section>
 
-              <section data-markdown class="center">
-                <script type="text/template">
-                    ## About node modules
-
-                    * Use require to use the modules in your code (after installing them)
-                      ```
-                      var express = require('express')
-                      var own = require('./realativ/path/to/my_module')
-                      var fileSystem = require('fs'); // node core module
-                      ```
-                    * Modules are cached after the first time they are loaded.
-
-                    https://nodejs.org/api/modules.html
-                </script>
-              </section>
+              
           </section>
 
 <!--
@@ -350,10 +378,10 @@
           <section data-markdown>
             <script type="text/template">
               <!-- .slide: class="center noborderimages" -->
-              ## Until next time...
+              ## What to do now...
 
-              * Read [the learning objects](https://coursepress.lnu.se/kurs/serverbaserad-webbprogrammering/introduction/)
-              * Repeat async programming (watch videos)
+              * Read the resources on the course page
+              * Repeat async programming (watch the demo videos)
               * Start exercise (when we created repos and publish info)
               * When ready start Examination assignment...
 
