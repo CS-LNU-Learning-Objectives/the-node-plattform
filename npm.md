@@ -77,8 +77,19 @@ There are many ways of specifying versions in the package.json. More information
 
 If no sign is provided it will always install just that version. There are different opinions about how to do this. The default way is using ^-character in front of the version number to allow bug fixes and backward compatibility but some people advise to just use the specified version number (without any character in front) to avoid version problem when going to production. The version system used by node-modules is built on the [Semantic Versioning guidelines.](http://semver.org/)
 
+## package-lock.json
+As you may wonder this could lead to problems, especially when handling modules in a production environment. 
+By default, ´npm install´  recursively installs all the dependencies that the modules specified in your package.json 
+have using the above described semver patterns. When shipping code we don´t want some modules be of an other versions 
+then the one used when building the software. 
+We want guarantee that a developer of a module in our dependency chain won´t be able to make a update that potentially 
+can break or build. If we only put our trust in package.json this could happened.
+
+Therefor will npm also create the package-lock.json-file. This file holds the single representation of the dependency tree so that
+other developers (or build scripts) will install the exactly same versions of the dependencies. For more information please read: https://docs.npmjs.com/files/package-locks
+
 ## NPM Shrinkwrap
-As you may wonder this could lead to problems, especially when handling modules in a production environment. By default, ´npm install´  recursively installs all the dependencies that the modules specified in your package.json have using the above described semver patterns. When shipping code we don´t want some modules be of an other versions then the one used when building the software. To fix this problem we can use the `npm shrinkwrap` command. For more information [consult the documentation](https://docs.npmjs.com/cli/shrinkwrap).
+To fix this problem we can use the `npm shrinkwrap` command. For more information [consult the documentation](https://docs.npmjs.com/cli/shrinkwrap).
 
 
 ## NPM as a build tool
@@ -87,9 +98,8 @@ This is out of scope for this text but if you are interested in this you should 
 
 ## NPMs weakness 
 Early 2016 the npm community suffered a lot when the user Azer Koçulu removed more than 250 packages from NPM. Among thoose removed packages one in particular, left-pad, was used by many open source projects resulting in broken build processes all over. [How one developer just broke Node, Babel and thousands of projects in 11 lines of JavaScript
-](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/)
+](http://www.theregister.co.uk/2016/03/23/npm_left_pad_chaos/). These kind of problems is now fixed and a developer now can´t remove code published in the npm community.
 
 ## Further reading
 * https://docs.npmjs.com/
-* https://docs.npmjs.com/misc/faq#should-i-check-my-node-modules-folder-into-git
 * [Kate Hudsons talk from nordic.js 2015](https://www.youtube.com/watch?v=0RYETb9YVrk)
