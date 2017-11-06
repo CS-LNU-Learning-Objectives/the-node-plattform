@@ -58,7 +58,7 @@
                 <p>
                     This work is produced by <a href="https://github.com/thajo" style="color: #333">John Häggerud</a> at Linnaeus University.
                 </p>
-                <p>All content in this work excluding photographs, icons, picture of course litterature and Linnaeus University logotype and symbol, is licensied under a
+                <p>All content in this work excluding photographs, icons, pictures of the course literature and Linnaeus University logotype and symbol, is licensied under a
                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />Creative Commons Attribution 4.0 International License</a>.</p>
                 <h4>You are free to </h4>
                 <ul>
@@ -69,7 +69,7 @@
                     <li>change the content</li>
                 </ul>
                 <p>
-                    If you change the content do not use the photographs, icons, picture of the course literature or Linnaeus University logotype and symbol in your new work!
+                    If you change the content do not use the photographs, icons, pictures of the course literature or Linnaeus University logotype and symbol in your new work!
                 </p>
                 <p>
                     At all times you must give credit to: ”Linnaeus university” with the link <a style="color: #333" href="https://webbprogrammerare.se">https://webbprogrammerare.se</a> and to the Creative Common-license above.
@@ -81,7 +81,7 @@
           <section data-markdown>
               <script type="text/template">
                   <img width="40%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt="">
-                
+
                   * Not a web server!
                   * Not a framework!
                   * Not just for Web Sites!
@@ -99,10 +99,10 @@
 
                     * Ryan Dahl, San Diego, California
                     * Dropped out of Math PhD program
-                    * Start coding web sites
+                    * Started coding web sites
                     * Flickr Image upload progress bar
                     * V8, Google chrome javascript engine, an event loop, and a low-level I/O API (libuv)
-                    * Six month, JSConf december 2009
+                    * Six months: JSConf December 2009
                     * [Node.js Foundation](https://nodejs.org/en/foundation/)
               </script>
             </section>
@@ -119,7 +119,7 @@
 
             <section data-markdown>
               <script type="text/template">
-                  ## Characteristic
+                  ## Characteristics
 
                   * Non-blocking
                   * Asynchronous
@@ -147,7 +147,7 @@
                   ?>
                   ```
 
-                  Non-blocking - asynchronous
+                  Non-blocking / Asynchronous
                   ``` javascript
                   let request = require("request");
 
@@ -178,15 +178,14 @@
             </section>
 
             <section>
-             
+
               <section data-markdown>
                 <script type="text/template">
-                    ## Multi threaded vs. single thread
+                    ## Multi-threaded vs. Single-threaded
                     * Fork a process for each request
-                    * Having a thread pool and use a thread for each request
-                      * Wait for availible threads, taking system RAM, context switching
-                      * Lots of idle in each thread, waiting for data from connection, I/O blocking the thread
-
+                    * Maintain a thread pool and use a thread for each request
+                      * Waiting for available threads, taking system RAM, context switching
+                      * Lots of idling in each thread, waiting for data from connection, I/O blocking the thread
                     <p class="center">
                       <img src="./images/multithread.png" width="60%" alt="">
                     </p>
@@ -195,11 +194,11 @@
 
               <section data-markdown>
                 <script type="text/template">
-                    ### Multi threaded vs. single thread
-                    * Single thread asynchronous
-                    * Can handle more connection, more light-weight
-                      * Beware of heavy computation that choke up the single thread
-                      * Beware of allowing exceptions bubbling up to the core (topmost) Node.js event loop
+                    ### Multi-threaded vs. Single-threaded
+                    * Single thread is asynchronous
+                    * Can handle more connections, is more light-weight
+                      * Beware of heavy computations that may choke up the single thread
+                      * Beware of allowing exceptions to bubble up to the core (topmost) Node.js event loop
                     <p class="center">
                       <img src="./images/singleasync.png" width="55%" alt="">
                     </p>
@@ -224,7 +223,7 @@
 
                   * Javascript everywhere!
                   * Server-side web applications
-                    * No CPU intensive computation
+                    * No CPU-intensive computation
                     * API on top of a JSON Storage Object DB
                     * Front-end servers
                   * Realtime applications
@@ -246,7 +245,7 @@
                 <script type="text/template">
                     ## Be aware!
 
-                   
+
                     ```
                     let requestHandler = (req, res) => {
                       let body = req.body // Contains the POST body the client sends
@@ -273,7 +272,7 @@
 
                     * Bundled with Node
                     * Easy for sharing and reusing javascript code
-                    * packages/modules
+                    * Packages/modules
                     * cli program
                       ```
                       npm install
@@ -284,14 +283,14 @@
 
               <section data-markdown class="noborderimages">
                 <script type="text/template">
-                    ## app.js 
-                    
+                    ## app.js
+
                     ```
                     const lodash = require('lodash')
-                    
+
                     // use the modules shuffle method
                     let res = lodash.shuffle([1, 2, 3, 4])
-                    
+
                     // => [4, 1, 3, 2]
                     console.log(res)
                     ```
@@ -312,22 +311,22 @@
               <section data-markdown class="noborderimages">
                 <script type="text/template">
                     ## NPM - installing modules
-                    Use npm to install others modules into your project!
+                    Use npm to install other modules into your project!
                     ```bash
                     # Add to package.json under dependencies
                     npm install mocha
                     ```
                     ```bash
                     # Add to package.json under devDependencies
-                    npm install mocha --save-dev 
+                    npm install mocha --save-dev
                     ```
                     ```bash
-                    # Install globally on computer - no add to package.json
-                    npm install mocha -g 
+                    # Install globally on computer - don't add to package.json
+                    npm install mocha -g
                     ```
 
                     ![node_modules](./images/node_modules.png)
-                    
+
                     </script>
               </section>
 
@@ -339,7 +338,7 @@
                 }
                 ```
 
-                
+
                 * Semantic Versioning (semver)
                   * major.minor.patch
                 * "^3.7.2" - caret
@@ -347,24 +346,24 @@
                 * "~3.7.2" - tilde
                   * `npm install` could install 3.7.9
                 * `npm update` - check for newer versions, bug fixes...
-                
+
                 </script>
               </section>
-              
+
 
               <section data-markdown class="noborderimages">
                 <script type="text/template">
                     ## NPM - package-lock.json
-                    * Is automatically generated for any operations where npm modifies either the node_modules tree, or package.json. 
-                    * It describes the exact tree that was generated
-                      * install exactly the same dependencies - fixed versions
+                    * Is automatically generated for any operations where npm modifies either the `node_modules` tree, or `package.json`.
+                    * It describes the exact dependency tree that was generated
+                      * Later install the exact same dependencies - fixed versions
                     * Should be pushed to your repository
 
                     https://docs.npmjs.com/files/package-lock.json
                 </script>
               </section>
 
-              
+
           </section>
 
 <!--
