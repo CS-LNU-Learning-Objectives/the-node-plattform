@@ -2,21 +2,21 @@
 
 This is a learning objective from [Linnaeus University](http://lnu.se), Kalmar, Sweden.
 This LO is about the node platform.
-This work i licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
+This work is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/)
 
 ## Content
-* The Node platform - Javascript everywhere
-* History
-* Philosophy
-* NPM - Node Package Manager
-* Non-blocking programming
+* [The Node platform - Javascript everywhere](the-node-platform.md)
+* [The History](the-node-platform.md#the-history)
+* [The Philosophy](the-node-platform.md#the-philosophy)
+* [NPM - Node Package Manager](npm.md)
+* [Non-blocking programming](eventdriven-programming.md)
 * External Resources
 
 ## Goal
-The student should get a deep understanding about the node platform, where to use it and its echo system.
+The student should get a deep understanding about the node platform, where to use it and its ecosystem.
 
 ## Materials
-* Presentation (reveal.js)
+* [Presentation (reveal.js)](slides/index.html)
 * Text material (Markdown format)
 * Peer-instruction questions
 * Oral exam questions
