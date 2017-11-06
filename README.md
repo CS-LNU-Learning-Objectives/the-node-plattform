@@ -8,7 +8,7 @@ This work is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/
 * [The Node platform - Javascript everywhere](the-node-platform.md)
 * [The History](the-node-platform.md#the-history)
 * [The Philosophy](the-node-platform.md#the-philosophy)
-* NPM - Node Package Manager
+* [NPM - Node Package Manager](npm.md)
 * Non-blocking programming
 * External Resources
 
