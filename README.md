@@ -9,14 +9,14 @@ This work is licensed under [CC BY 2.0](https://creativecommons.org/licenses/by/
 * [The History](the-node-platform.md#the-history)
 * [The Philosophy](the-node-platform.md#the-philosophy)
 * [NPM - Node Package Manager](npm.md)
-* Non-blocking programming
+* [Non-blocking programming](eventdriven-programming.md)
 * External Resources
 
 ## Goal
 The student should get a deep understanding about the node platform, where to use it and its ecosystem.
 
 ## Materials
-* Presentation (reveal.js)
+* [Presentation (reveal.js)](slides/index.html)
 * Text material (Markdown format)
 * Peer-instruction questions
 * Oral exam questions
