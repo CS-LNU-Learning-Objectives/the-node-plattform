@@ -9,6 +9,7 @@ When you got Node.js installed you also got the NPM program which lets you write
 ```
 npm -v
 ```
+
 This will output the version of NPM that is installed on your system. The NPM program have lots of commands we need to know about to be effective in our work.
 
 ### Install NPM modules
@@ -17,37 +18,45 @@ The most common task is to install a package to use in your program. A very comm
 ```
 npm install lodash
 ```
+
 That means that you are going to install the *lodash* package in your project folder. You may see that a new folder is created, `node_modules`. This is the folder where Node will look for installed modules when you try to require/use them in your own code. If you look in that folder you will find the module and all its code installed in the `lodash` folder.
 
 We have installed the module locally, that is, installed it in our project folder. This is the most common way to work with modules in your applications.
 
 Sometimes a module could be installed globally, so we can use it from anywhere in our system. If we want to install the module globally you add the `-g` flag when installing:
+
 ```
 npm install <name_of_the_module> -g
 ```
+
 The NPM program will then install the module in its global folder, which depends on the operating system you're using and in what folder Node is installed. More info about this at [https://docs.npmjs.com/files/folders](https://docs.npmjs.com/files/folders).
 
 ## The package.json file
 Every Node project should have a `package.json` file (at least) in its root folder. This is a meta file that describes your project. Things like author, version, and repository URL are written in this file. The `package.json` also describes what dependencies your project has, that is, what other NPM packages it depends on.
 
 Let's say you push your project to a GitHub repository for others to download and run. Should you also push up all the modules you are using? It could be hundreds of folders with code. You should probably put the `node_modules` folder in your `.gitignore` file to avoid that, and let the users install the modules by themselves by reading in the `package.json` file which modules your project needs. By running the command:
+
 ```
 npm install
 ```
+
 Node will look for the `package.json` file and figure out which modules it will need to install.
 
 So when you install a module in your project with `npm install <name_of_the_module>` you should also add the module name to your `package.json`. You can do this by using the flag `--save` or `--save-dev`, where `--save-dev` is for packages we're just using when developing but not in production. That could be packages for testing, hinting, code coverage and things like that. [Since version > 5.0 of npm the `--save` flag will be added by default](http://blog.npmjs.org/post/161081169345/v500). An example of this could be:
+
 ```
 npm install lodash --save
 ```
+
 and
+
 ```
 npm install mocha --save-dev
 ```
 
 If you run these two commands your `package.json` file will look something like this:
 
-```
+```json
 {
   "name": "my-project",
   "version": "1.0.0",
