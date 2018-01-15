@@ -54,11 +54,11 @@
 
             <!-- CC -->
             <section data-state="lnu-cc">
-                <h2>Licence for this work</h2>
+                <h2>License for this work</h2>
                 <p>
                     This work is produced by <a href="https://github.com/thajo" style="color: #333">John Häggerud</a> at Linnaeus University.
                 </p>
-                <p>All content in this work excluding photographs, icons, picture of course litterature and Linnaeus University logotype and symbol, is licensied under a
+                <p>All content in this work excluding photographs, icons, picture of course literature and Linnaeus University logotype and symbol, is licensied under a
                 <a rel="license" href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />Creative Commons Attribution 4.0 International License</a>.</p>
                 <h4>You are free to </h4>
                 <ul>
@@ -80,13 +80,14 @@
 
           <section data-markdown>
               <script type="text/template">
-                  <img width="40%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt="">
+                  <img width="30%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt="">
                 
                   * Not a web server!
                   * Not a framework!
                   * Not just for Web Sites!
-                  * A platform!
-                    * Like ASP.NET, PHP...
+                  * An application platform!
+                    * Runs on a javascript engine
+                    * Like ASP.NET, JAVA...
               </script>
             </section>
 
@@ -102,7 +103,7 @@
                     * Start coding web sites
                     * Flickr Image upload progress bar
                     * V8, Google chrome javascript engine, an event loop, and a low-level I/O API (libuv)
-                    * Six month, JSConf december 2009
+                    * Six month, JSConf December 2009
                     * [Node.js Foundation](https://nodejs.org/en/foundation/)
               </script>
             </section>
@@ -121,24 +122,56 @@
               <script type="text/template">
                   ## Characteristic
 
+                  * Single threaded architecture!?
                   * Non-blocking
                   * Asynchronous
                   * Event-driven
-                  * Single threaded
+                 
 
               </script>
             </section>
-
-
-
-            <section>
             <section data-markdown>
+              <script type="text/template">
+                  ##  Multi-Thread web server architecture
+                  * Isolated process for each request
+                    * More traditional web servers like Apache (PHP), Tomcat (JAVA)
+                  * Having a thread pool and use a thread for each request
+                    * Wait for available threads, taking system RAM, context switching
+                    * Lots of idle in each thread, waiting for data from connection, I/O operations synchronous
+
+                  <p class="center">
+                    <img src="./images/multithreaded.png" width="60%" alt="">
+                  </p>
+                 
+
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                  ##  Single-threaded web server architecture
+                  * Node.js uses a single-threaded architecture
+                  <p class="center">
+                    <img src="./images/single-thread.png" width="60%" alt="">
+                  </p>
+                  [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
+              </script>
+            </section>
+            <section data-markdown>
+              <script type="text/template">
+                  <!-- .slide: class="center" -->
+                  ![Node.js system](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
+
+                  credit: https://twitter.com/BusyRich/status/494959181871316992
+
+              </script>
+            </section>
+             <section data-markdown>
 
               <script type="text/template">
                   ## Blocking vs. Non-blocking
 
                   Blocking
-                  ```
+                  ```php
                   <?php
                     $homepage = file_get_contents("http://www.example.com");
                     echo $homepage;
@@ -149,15 +182,15 @@
 
                   Non-blocking - asynchronous
                   ``` javascript
-                  let request = require("request");
+                  let request = require("request")
 
-                  request("http://www.example.com", function (error, response, body) {
+                  request('http://www.example.com', function (error, response, body) {
                     if (!error && response.statusCode === 200) {
                       console.log(body) // Show the HTML for the homepage.
                     }
                     ...
                   })
-                  // ... dont have to wait to do stuff here
+                  // ... don't have to wait to do stuff here
                 ```
 
 
@@ -169,54 +202,13 @@
               <script type="text/template">
                  ## Event-driven programming
 
-                  * Callbacks (video)
+                  * Callbacks
                   * Promises (video)
-                  * Event Emitters (video)
-                  * "Await and Async" - supported in Node.js
+                  * "Await and Async" (video) - supported in Node.js
+                  * Event Emitters
               </script>
             </section>
-            </section>
-
-            <section>
-             
-              <section data-markdown>
-                <script type="text/template">
-                    ## Multi threaded vs. single thread
-                    * Fork a process for each request
-                    * Having a thread pool and use a thread for each request
-                      * Wait for availible threads, taking system RAM, context switching
-                      * Lots of idle in each thread, waiting for data from connection, I/O blocking the thread
-
-                    <p class="center">
-                      <img src="./images/multithread.png" width="60%" alt="">
-                    </p>
-                </script>
-              </section>
-
-              <section data-markdown>
-                <script type="text/template">
-                    ### Multi threaded vs. single thread
-                    * Single thread asynchronous
-                    * Can handle more connection, more light-weight
-                      * Beware of heavy computation that choke up the single thread
-                      * Beware of allowing exceptions bubbling up to the core (topmost) Node.js event loop
-                    <p class="center">
-                      <img src="./images/singleasync.png" width="55%" alt="">
-                    </p>
-                    [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
-
-                </script>
-              </section>
-
-              <section data-markdown>
-                <script type="text/template">
-                    <!-- .slide: class="center" -->
-                    ![Node.js system](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
-
-                    credit: https://twitter.com/BusyRich/status/494959181871316992
-
-                </script>
-              </section>
+           
 
               <section data-markdown>
                 <script type="text/template">
@@ -224,9 +216,10 @@
 
                   * Javascript everywhere!
                   * Server-side web applications
-                    * No CPU intensive computation
-                    * API on top of a JSON Storage Object DB
-                    * Front-end servers
+                    * Traditional dynamic web site
+                    * Backend for Single Page Application
+                      * API on top of a JSON Storage Object DB
+                      * Front-end servers
                   * Realtime applications
                     * Handling realtime event from server to clients
                 </script>
@@ -234,10 +227,13 @@
 
               <section data-markdown>
                 <script type="text/template">
-                  ## When NOT to use Node.js
+                  ## When NOT to use Node.js!
                   * Not suited for CPU-intensive tasks
-                  * Use clustering to offload all heavy computation to background services
-                    * There is a [cluster module in Node.js](https://nodejs.org/api/cluster.html)
+                    * Big data analytic
+                    * Scientific computing
+                  * Code that blocks the thread
+                    * Use clustering to offload all heavy computation to background services
+                      * There is a [cluster module in Node.js](https://nodejs.org/api/cluster.html)
 
                 </script>
               </section>
