@@ -80,14 +80,15 @@
 
           <section data-markdown>
               <script type="text/template">
-                  <img width="30%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt="">
-                
+                 <!-- .slide: class="center" -->
+                  <img width="25%" src="https://nodejs.org/static/images/logo.svg" style="background:none; border:none; box-shadow:none;" alt="">
+                  * An application platform!
+                    * Runs on a javascript engine
+                    * Like JAVA...  
                   * Not a web server!
                   * Not a framework!
                   * Not just for Web Sites!
-                  * An application platform!
-                    * Runs on a javascript engine
-                    * Like JAVA...
+                 
               </script>
             </section>
 
@@ -95,12 +96,10 @@
               <script type="text/template">
                   <!-- .slide: class="two-floating-elements" -->
 
-                  ## History of Node.js?
+                  ## Node.js
                   ![](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Ryan_Dahl.jpg/400px-Ryan_Dahl.jpg)
 
                     * Ryan Dahl, San Diego, California
-                    * Dropped out of Math PhD program
-                    * Start coding web sites
                     * Flickr Image upload progress bar
                     * V8, Google chrome javascript engine, an event loop, and a low-level I/O API (libuv)
                     * Six month, JSConf December 2009
@@ -113,7 +112,9 @@
                   ## The Philosophy
 
                   * Small core
-                  * Small modules/packages (using package managers like npm)
+                  * Small userland modules
+                  * One module, doing one thing well
+                  * Package managers like npm
 
               </script>
             </section>
@@ -132,7 +133,7 @@
             </section>
             <section data-markdown>
               <script type="text/template">
-                  ##  Multi-Thread web server architecture
+                  ###  Multi-Thread web server architecture
                   * Isolated process for each request
                     * More traditional web servers like Apache (PHP), Tomcat (JAVA)
                   * Having a thread pool and use a thread for each request
@@ -148,8 +149,8 @@
             </section>
             <section data-markdown>
               <script type="text/template">
-                  ##  Single-threaded web server architecture
-                  * Node.js uses a single-threaded architecture
+                  ###  Single-threaded web server architecture
+         
                   <p class="center">
                     <img src="./images/single-thread.png" width="60%" alt="">
                   </p>
