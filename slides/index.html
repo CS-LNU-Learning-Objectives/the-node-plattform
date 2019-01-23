@@ -43,7 +43,7 @@
             <!-- Start -->
             <section class="center" data-state="lnu-intro">
                 <h3>The Node Platform</h3>
-                <h3>Learning Object</h3>
+                <h3>1DV023</h3>
                 <h1>Linnaeus University</h1>
                 <div class="lnu-footer">
                     <img src="./images/lnu-logotype.png" />
@@ -123,7 +123,9 @@
                   let thirdPartyModule = require('someThirdPartyModule') // installed module 
                   let myLocalModule = require('myLocalModule') // own local module 
                   ```               
-                  ECMAScript modules? - https://nodejs.org/api/esm.html   
+                  ECMAScript modules? 
+                  <!-- .element: class="fragment" -->
+                  https://nodejs.org/api/esm.html
                   <!-- .element: class="fragment" -->
 
               </script>
@@ -169,16 +171,18 @@
                   [Philip Roberts: What the heck is the event loop anyway? | JSConf EU 2014](https://www.youtube.com/watch?v=8aGhZQkoFbQ)
               </script>
             </section>
+
+            <!--
             <section data-markdown>
               <script type="text/template">
-                  <!-- .slide: class="center" -->
+                  
                   ![Node.js system](https://pbs.twimg.com/media/Bt5ywJrIEAAKJQt.jpg:large)
 
                   credit: https://twitter.com/BusyRich/status/494959181871316992
 
               </script>
             </section>
-           
+          -->
              <section data-markdown>
 
               <script type="text/template">
@@ -245,22 +249,20 @@
               <section data-markdown>
                 <script type="text/template">
                   ## When NOT to use Node.js!
+                  * Running code that blocks the thread
                   * Not suited for requests that handles CPU-intensive tasks
-                    * Big data analytic
-                    * Scientific computing
-                  * Code that blocks the thread
+                    * Tasks involving calculation
                     * Use clustering to offload all heavy computation to background services
                       * There is a [cluster module in Node.js](https://nodejs.org/api/cluster.html)
-                    * Scale with more replicas
 
                 </script>
               </section>
 
+              
               <section data-markdown>
                 <script type="text/template">
                     ## Be aware!
-
-                   
+        
                     ```
                     let requestHandler = (req, res) => {
                       let body = req.body // Contains the POST body the client sends
