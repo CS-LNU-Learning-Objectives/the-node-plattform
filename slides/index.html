@@ -104,6 +104,8 @@
                     * JSConf December 2009
                     * Joyent
                     * [Node.js Foundation](https://nodejs.org/en/foundation/)
+                      * LTS (version 10.15.0)
+                      * Stable (version 11.7.0)
               </script>
             </section>
 
@@ -121,7 +123,7 @@
                   ```
                   let http = require('http'); // core module
                   let thirdPartyModule = require('someThirdPartyModule') // installed module 
-                  let myLocalModule = require('myLocalModule') // own local module 
+                  let myLocalModule = require('./lib/myLocalModule') // own local module 
                   ```               
                   ECMAScript modules? 
                   <!-- .element: class="fragment" -->
@@ -225,7 +227,7 @@
                   * "Await and Async"
                   * Event Emitters 
                     * Create your own events
-                    * Listen for multiple events
+                    * Listen for multiple triggers of events
               </script>
             </section>
            
@@ -290,7 +292,7 @@
                     * Bundled with Node
                     * Easy for sharing and reusing javascript code
                     * packages/modules
-                    * cli program
+                    * cli
                       ```bash
                       # installs all dependencies in package.json
                       npm install 
@@ -374,7 +376,7 @@
                 <script type="text/template">
                     ## Short demo
 
-                    Creating a hello world web server with express.js
+                    
                 </script>
               </section>
 
